@@ -10,7 +10,7 @@ namespace PrimeNumbersSignalR.Hubs
     {
         public void GenerateAmountOfPrimes(int amountOfPrimes)
         {
-            if (amountOfPrimes <= 0)
+            if (amountOfPrimes <= 0 || amountOfPrimes > int.MaxValue)
             {
                 throw new ArgumentOutOfRangeException("You must enter a value between 1 and " + int.MaxValue);
             }
