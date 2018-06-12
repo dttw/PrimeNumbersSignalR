@@ -89,7 +89,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hubs\NumberGeneratorHubTests.cs" />
+    <Compile Include="Hubs\NumberGenerationHubTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

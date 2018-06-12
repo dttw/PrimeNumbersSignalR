@@ -6,9 +6,14 @@ using Microsoft.AspNet.SignalR;
 
 namespace PrimeNumbersSignalR.Hubs
 {
-    public class NumberGeneratorHub : Hub
+    public class NumberGenerationHub : Hub
     {
-        public void Hello()
+        public void GeneratePrimesUpTo(int maxPrime)
+        {
+            Clients.All.hello();
+        }
+
+        public void GenerateAmountOfPrimes(int amountOfPrimes)
         {
             Clients.All.hello();
         }
