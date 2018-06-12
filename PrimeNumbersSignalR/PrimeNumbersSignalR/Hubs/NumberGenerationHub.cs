@@ -8,14 +8,14 @@ namespace PrimeNumbersSignalR.Hubs
 {
     public class NumberGenerationHub : Hub
     {
-        public void GeneratePrimesUpTo(int maxPrime)
-        {
-            Clients.All.hello();
-        }
-
         public void GenerateAmountOfPrimes(int amountOfPrimes)
         {
-            Clients.All.hello();
+            if (amountOfPrimes <= 0)
+            {
+                throw new ArgumentOutOfRangeException("You must enter a value between 1 and " + int.MaxValue);
+            }
+
+            Clients.All.generatedNumbers(new List<int>());
         }
     }
 }
