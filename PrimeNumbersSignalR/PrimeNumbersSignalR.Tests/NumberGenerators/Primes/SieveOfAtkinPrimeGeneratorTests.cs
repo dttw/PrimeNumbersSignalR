@@ -15,7 +15,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
         // Test method with -1 should throw ArgumentOutOfRangeException
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void FindAmountOfPrimesTestTestWithNegativeInteger()
+        public void FindAmountOfPrimesTestWithNegativeInteger()
         {
 
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
@@ -26,10 +26,37 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
         // Test method with 0 should throw ArgumentOutOfRangeException
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void FindAmountOfPrimesTestTestWithZero()
+        public void FindAmountOfPrimesTestWithZero()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             primeGenerator.FindAmountOfPrimes(0);
+        }
+
+        [TestMethod()]
+        public void FindAmountOfPrimesTestWithLowRangeInteger()
+        {
+            SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
+            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1);
+
+            Assert.Equals(primesGenerated.Count, 1);
+        }
+
+        [TestMethod()]
+        public void FindAmountOfPrimesTestWithMidRangeInteger()
+        {
+            SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
+            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1073741823);
+
+            Assert.Equals(primesGenerated.Count, 1073741823);
+        }
+
+        [TestMethod()]
+        public void FindAmountOfPrimesTestWithMaxRangeInteger()
+        {
+            SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
+            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(int.MaxValue);
+
+            Assert.Equals(primesGenerated.Count, int.MaxValue);
         }
 
         // Test performance of generating 2000000 primes
@@ -50,7 +77,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
 
         // Test that the amount of Primes returned matches the amount requested.
         [TestMethod()]
-        public void FindAmountOfPrimesTestAmount()
+        public void FindAmountOfPrimesTestAmountGenerated()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
