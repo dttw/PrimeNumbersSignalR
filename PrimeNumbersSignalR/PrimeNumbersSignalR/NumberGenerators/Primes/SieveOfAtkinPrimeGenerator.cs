@@ -34,7 +34,7 @@ The algorithm:
 
     public class SieveOfAtkinPrimeGenerator : IPrimeGenerator
     {
-        private List<int> primes = new List<int>();
+        private List<int> primesFound = new List<int>();
         private bool[] isPrime = new bool[] { };
 
         public IList<int> FindAmountOfPrimes(int amountOfPrimes)
@@ -58,13 +58,27 @@ The algorithm:
             throw new NotImplementedException();
         }
 
-        private void SieveForPrimes(uint primeLimit)
+        private void FindPrimes(uint primeLimit)
         {
-            // TODO: Add 2, 3 & 5 to list of primes
+            // Add 2, 3 & 5 to list of primes
+            SetupPrimeSieve(primeLimit);
+
             // TODO: Create sieve containing all integers
             // TODO: Check remainders
+
             // TODO: Include lowest number in results
             // TODO: Square the number previously added to results, mark all multiples as non-prime
+        }
+
+        private void SetupPrimeSieve(uint primeLimit)
+        {
+            // Algorithm step 1
+            primesFound.Add(2);
+            primesFound.Add(3);
+            primesFound.Add(5);
+
+            // Alogorithm step 2
+            isPrime = new bool[primeLimit + 1];
         }
     }
 }
