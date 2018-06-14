@@ -16,16 +16,21 @@ namespace PrimeNumbersSignalR.Hubs
             this.primeGenerator = primeGenerator;
         }
 
+        public void MaxPrimeLimit()
+        {
+            Clients.All.maxPrimeLimit(primeGenerator.MaxPrimeLimit);
+        }
+
         public void GenerateAmountOfPrimes(int amountOfPrimes)
         {
-            if (amountOfPrimes <= 0 || amountOfPrimes > primeGenerator.MaxPrimeLimit)
+            if (!(amountOfPrimes <= 0) && !(amountOfPrimes > primeGenerator.MaxPrimeLimit))
             {
-                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", primeGenerator.MaxPrimeLimit.ToString());
+                IList<long> foundPrimes = primeGenerator.FindAmountOfPrimes(amountOfPrimes);
+
+                Clients.All.generatedNumbers(foundPrimes);
             }
 
-            IList<long> foundPrimes = primeGenerator.FindAmountOfPrimes(amountOfPrimes);
-
-            Clients.All.generatedNumbers(foundPrimes);
+            Clients.All.primesRequestedOutOfRange(string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit.ToString()));
         }
     }
 }
