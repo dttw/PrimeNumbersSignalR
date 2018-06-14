@@ -28,7 +28,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             primeGenerator.FindAmountOfPrimes(0);
         }
 
-
+        // Test method with 100000001 should throw ArgumentOutOfRangeException
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void FindAmountOfPrimesTestOutOfRangeGreaterThanMax()
@@ -37,6 +37,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             primeGenerator.FindAmountOfPrimes(100000001);
         }
 
+        // Test method with 1 should return an list of longs with 1 entry
         [TestMethod()]
         public void FindAmountOfPrimesTestWithLowRangeInteger()
         {
@@ -46,6 +47,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             Assert.AreEqual(1, primesGenerated.Count);
         }
 
+        // Test method with 50000000 should return an list of longs with 50000000 entries
         [TestMethod()]
         public void FindAmountOfPrimesTestWithMidRangeInteger()
         {
@@ -55,6 +57,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             Assert.AreEqual(50000000, primesGenerated.Count);
         }
 
+        // Test method with 100000000 should return an list of longs with 100000000 entries
         [TestMethod()]
         public void FindAmountOfPrimesTestWithMaxRangeInteger()
         {
@@ -64,7 +67,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             Assert.AreEqual(100000000, primesGenerated.Count);
         }
 
-        // Test performance of generating 2000000 primes
+        // Test performance of generating 100000000 primes
         [TestMethod()]
         public void FindAmountOfPrimesTestPerformance()
         {
@@ -99,29 +102,29 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
 
             IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(10000);
 
-            // 140th prime is 811
+            // 141st prime is 811
             Assert.IsTrue(primesGenerated.Any(prime => prime == 811));
             Assert.AreEqual(140, primesGenerated.IndexOf(811));
 
-            // 1713th prime is 14633
+            // 1714th prime is 14633
             Assert.IsTrue(primesGenerated.Any(prime => prime == 14633));
             Assert.AreEqual(1713, primesGenerated.IndexOf(14633));
 
-            // 4649th prime is 44741
+            // 4640th prime is 44741
             Assert.IsTrue(primesGenerated.Any(prime => prime == 44741));
             Assert.AreEqual(4649, primesGenerated.IndexOf(44741));
 
-            // 6765th prime is 67933 
+            // 6766th prime is 67933 
             Assert.IsTrue(primesGenerated.Any(prime => prime == 67933));
             Assert.AreEqual(6765, primesGenerated.IndexOf(67933));
 
             // 9032nd prime is 93523 
             Assert.IsTrue(primesGenerated.Any(prime => prime == 93523));
-            Assert.AreEqual(9032, primesGenerated.IndexOf(93523));
+            Assert.AreEqual(9031, primesGenerated.IndexOf(93523));
 
             // 10000th prime is 104729
             Assert.IsTrue(primesGenerated.Any(prime => prime == 104729));
-            Assert.AreEqual(10000, primesGenerated.IndexOf(104729));
+            Assert.AreEqual(9999, primesGenerated.IndexOf(104729));
         }
     }
 }
