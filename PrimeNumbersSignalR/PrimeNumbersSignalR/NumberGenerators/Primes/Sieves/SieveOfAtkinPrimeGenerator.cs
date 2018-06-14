@@ -41,6 +41,8 @@ The algorithm:
         private long limitSquareRoot = 0;
         private long primeLimit = 0;
 
+        public int MaxPrimeLimit => 50000000;
+
         public SieveOfAtkinPrimeGenerator()
         {
             // Algorithm step 1
@@ -52,9 +54,9 @@ The algorithm:
 
         public IList<long> FindAmountOfPrimes(int amountOfPrimes)
         {
-            if (amountOfPrimes <= 0 || amountOfPrimes > 100000000)
+            if (amountOfPrimes <= 0 || amountOfPrimes > MaxPrimeLimit)
             {
-                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", "100000000");
+                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", MaxPrimeLimit.ToString());
             }
 
             // Approximate the limit based on the amount of primes requested
@@ -68,9 +70,9 @@ The algorithm:
 
         public IList<long> FindPrimesUpTo(int primeLimit)
         {
-            if (primeLimit <= 0 || primeLimit > 100000000)
+            if (primeLimit <= 0 || primeLimit > MaxPrimeLimit)
             {
-                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", "100000000");
+                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", MaxPrimeLimit.ToString());
             }
 
             SieveForPrimes(primeLimit);
