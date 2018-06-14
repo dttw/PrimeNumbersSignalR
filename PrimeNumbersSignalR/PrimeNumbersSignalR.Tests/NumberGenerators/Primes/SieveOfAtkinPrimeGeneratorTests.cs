@@ -12,7 +12,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         // Test method with -1 should throw ArgumentOutOfRangeException
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void FindAmountOfPrimesTestWithNegativeInteger()
+        public void FindAmountOfPrimesTestWithOutOfRangeNegative()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
@@ -22,7 +22,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         // Test method with 0 should throw ArgumentOutOfRangeException
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void FindAmountOfPrimesTestWithZero()
+        public void FindAmountOfPrimesWithOutOfRangeZero()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             primeGenerator.FindAmountOfPrimes(0);
@@ -31,7 +31,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void FindAmountOfPrimesTestWithOutOfRangeInteger()
+        public void FindAmountOfPrimesTestOutOfRangeGreaterThanMax()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             primeGenerator.FindAmountOfPrimes(100000001);
