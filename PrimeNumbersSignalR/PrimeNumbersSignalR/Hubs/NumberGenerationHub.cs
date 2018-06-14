@@ -11,9 +11,9 @@ namespace PrimeNumbersSignalR.Hubs
     {
         internal IPrimeGenerator primeGenerator;
 
-        public NumberGenerationHub(IPrimeGenerator repository)
+        public NumberGenerationHub(IPrimeGenerator primeGenerator)
         {
-            primeGenerator = repository;
+            this.primeGenerator = primeGenerator;
         }
 
         public void GenerateAmountOfPrimes(int amountOfPrimes)
