@@ -82,6 +82,7 @@ The algorithm:
         {
             SetupPrimeSieve(primeLimit);
             CheckRemainders();
+            RemovePrimeSquares();
         }
 
         private void SetupPrimeSieve(long primeLimit)
@@ -153,6 +154,34 @@ The algorithm:
                 {
                     primeCandidates[quadForm] ^= true;
                 }
+            }
+        }
+
+        private void RemovePrimeSquares()
+        {
+            // Alogorithm step 4
+            // Start with the lowest number in the sieve list.
+            for (long primeCandidate = 5; primeCandidate <= limitSquareRoot; primeCandidate++)
+            {
+                // Alogorithm step 5
+                // Take the next number in the sieve list still marked prime.
+                if (primeCandidates[primeCandidate])
+                {
+                    // Mark squares of the found prime as not prime.
+                    MarkSquaresAsNotPrime(primeCandidate);
+                }
+            }
+        }
+
+        private void MarkSquaresAsNotPrime(long foundPrime)
+        {
+            long primeSquared = foundPrime * foundPrime;
+
+            // Alogorithm step 7
+            // Square the found prime then mark all multiples of that square as non prime.
+            for (long notPrime = primeSquared; notPrime <= primeLimit; notPrime += primeSquared)
+            {
+                primeCandidates[notPrime] = false;
             }
         }
     }
