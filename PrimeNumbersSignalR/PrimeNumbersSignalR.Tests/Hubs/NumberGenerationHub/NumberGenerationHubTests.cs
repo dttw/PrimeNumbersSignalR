@@ -30,31 +30,44 @@ namespace PrimeNumbersSignalR.Hubs.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void MaxPrimeLimitTest()
+        {
+            //  Test method with 1
+            numberGenerationContract.Setup(contract => contract.maxPrimeLimit(It.IsAny<int>())).Verifiable();
+
+            NumberGenerationHub numberGenerationHub = new NumberGenerationHub(primeGenerator);
+            Mock<IHubCallerConnectionContext<dynamic>> mockClients = new Mock<IHubCallerConnectionContext<dynamic>>();
+
+            numberGenerationHub.Clients = mockClients.Object;
+
+            mockClients.Setup(m => m.All).Returns(numberGenerationContract.Object);
+            numberGenerationHub.MaxPrimeLimit();
+            numberGenerationContract.VerifyAll();
+        }
+
+        [TestMethod()]
         public void GeneratePrimesTestWithOutOfRangeNegative()
         {
             // Test method with -1
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.primesRequestedOutOfRange(It.Is<string>(outOfRangeMessage => outOfRangeMessage == string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit)))).Verifiable();
 
             TestGenerateAmountOfPrimes(-1, numberGenerationContract);
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GeneratePrimesTestWithOutOfRangeZero()
         {
             // Test method with 0
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.primesRequestedOutOfRange(It.Is<string>(outOfRangeMessage => outOfRangeMessage == string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit)))).Verifiable();
 
             TestGenerateAmountOfPrimes(0, numberGenerationContract);
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GeneratePrimesTestOutOfRangeGreaterThanMax()
         {
             // Test method with 0
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.primesRequestedOutOfRange(It.Is<string>(outOfRangeMessage => outOfRangeMessage == string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit)))).Verifiable();
 
             TestGenerateAmountOfPrimes(primeGenerator.MaxPrimeLimit + 1, numberGenerationContract);
         }

@@ -10,6 +10,8 @@ namespace PrimeNumbersSignalR.Hubs.Tests
     {
         void generatedNumbers(IList<long> generatedNumbers);
 
-        void generatedNumbers(Exception generationException);
+        void primesRequestedOutOfRange(string outOfRangeMessage);
+
+        void maxPrimeLimit(int limit);
     }
 }
