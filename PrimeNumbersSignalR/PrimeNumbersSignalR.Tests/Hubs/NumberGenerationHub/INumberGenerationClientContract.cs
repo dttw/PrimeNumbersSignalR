@@ -8,7 +8,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
 {
     public interface INumberGenerationClientContract
     {
-        void generatedNumbers(IList<int> generatedNumbers);
+        void generatedNumbers(IList<long> generatedNumbers);
 
         void generatedNumbers(Exception generationException);
     }

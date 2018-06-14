@@ -26,7 +26,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void GeneratePrimesTestWithNegativeInteger()
+        public void GeneratePrimesTestWithOutOfRangeNegative()
         {
             // Test method with -1
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
@@ -36,7 +36,17 @@ namespace PrimeNumbersSignalR.Hubs.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void GeneratePrimesTestWithZero()
+        public void GeneratePrimesTestWithOutOfRangeZero()
+        {
+            // Test method with 0
+            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
+
+            TestGenerateAmountOfPrimes(0, numberGenerationContract);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GeneratePrimesTestOutOfRangeGreaterThanMax()
         {
             // Test method with 0
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
@@ -48,7 +58,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
         public void GeneratePrimesTestLowRangeInteger()
         {
             //  Test method with 1
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<int>>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
             TestGenerateAmountOfPrimes(1, numberGenerationContract);
         }
@@ -57,18 +67,18 @@ namespace PrimeNumbersSignalR.Hubs.Tests
         public void GeneratePrimesTestMidRangeInteger()
         {
             // Test method with 1073741823
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<int>>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(1073741823, numberGenerationContract);
+            TestGenerateAmountOfPrimes(50000000, numberGenerationContract);
         }
 
         [TestMethod()]
         public void GeneratePrimesTestMaxRangeInteger()
         {
             // Test with maximum integer (2147483647)
-            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<int>>())).Verifiable();
+            numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(int.MaxValue, numberGenerationContract);
+            TestGenerateAmountOfPrimes(100000000, numberGenerationContract);
         }
     }
 }
