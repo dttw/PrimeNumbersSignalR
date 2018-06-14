@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using PrimeNumbersSignalR.NumberGenerators.Primes;
+using PrimeNumbersSignalR.NumberGenerators.Primes.Sieves;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -11,10 +13,11 @@ namespace PrimeNumbersSignalR.Hubs.Tests
     public class NumberGenerationHubTests
     {
         private Mock<INumberGenerationClientContract> numberGenerationContract = new Mock<INumberGenerationClientContract>();
+        private IPrimeGenerator primeGenerator;
 
         private void TestGenerateAmountOfPrimes(int amountOfPrimes, Mock<INumberGenerationClientContract> numberGenerationContract)
         {
-            NumberGenerationHub numberGenerationHub = new NumberGenerationHub();
+            NumberGenerationHub numberGenerationHub = new NumberGenerationHub(primeGenerator);
             Mock<IHubCallerConnectionContext<dynamic>> mockClients = new Mock<IHubCallerConnectionContext<dynamic>>();
 
             numberGenerationHub.Clients = mockClients.Object;
@@ -51,7 +54,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test method with 0
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(50000001, numberGenerationContract);
+            TestGenerateAmountOfPrimes(primeGenerator.MaxPrimeLimit + 1, numberGenerationContract);
         }
 
         [TestMethod()]
@@ -69,7 +72,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test method with 1073741823
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(25000000, numberGenerationContract);
+            TestGenerateAmountOfPrimes(primeGenerator.MaxPrimeLimit / 2, numberGenerationContract);
         }
 
         [TestMethod()]
@@ -78,7 +81,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test with maximum integer (2147483647)
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(50000000, numberGenerationContract);
+            TestGenerateAmountOfPrimes(primeGenerator.MaxPrimeLimit, numberGenerationContract);
         }
     }
 }
