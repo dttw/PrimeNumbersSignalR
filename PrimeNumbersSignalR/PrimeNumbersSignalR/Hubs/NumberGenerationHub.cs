@@ -23,7 +23,9 @@ namespace PrimeNumbersSignalR.Hubs
                 throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", primeGenerator.MaxPrimeLimit.ToString());
             }
 
-            Clients.All.generatedNumbers(new List<long>());
+            IList<long> foundPrimes = primeGenerator.FindAmountOfPrimes(amountOfPrimes);
+
+            Clients.All.generatedNumbers(foundPrimes);
         }
     }
 }
