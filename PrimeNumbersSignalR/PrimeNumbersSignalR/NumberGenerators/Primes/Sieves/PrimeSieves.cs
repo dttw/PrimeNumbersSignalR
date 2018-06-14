@@ -9,23 +9,23 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves
     {
         public static long ApproximatePrimeLimit(int amountOfPrimes)
         {
-            double n = (double)amountOfPrimes;
-            double p = 0;
+            double amoutnDouble = (double)amountOfPrimes;
+            double approximatePrimeLimit = 0;
 
             if (amountOfPrimes >= 7022)
             {
-                p = n * Math.Log(n) + n * (Math.Log(Math.Log(n)) - 0.9385);
+                approximatePrimeLimit = amoutnDouble * Math.Log(amoutnDouble) + amoutnDouble * (Math.Log(Math.Log(amoutnDouble)) - 0.9385);
             }
             else if (amountOfPrimes >= 6)
             {
-                p = n * Math.Log(n) + n * Math.Log(Math.Log(n));
+                approximatePrimeLimit = amoutnDouble * Math.Log(amoutnDouble) + amoutnDouble * Math.Log(Math.Log(amoutnDouble));
             }
             else if (amountOfPrimes > 0)
             {
-                p = new int[] { 2, 3, 5, 7, 11 }[amountOfPrimes - 1];
+                approximatePrimeLimit = new int[] { 2, 3, 5, 7, 11 }[amountOfPrimes - 1];
             }
 
-            return (long)p;
+            return (long)approximatePrimeLimit;
         }
     }
 }
