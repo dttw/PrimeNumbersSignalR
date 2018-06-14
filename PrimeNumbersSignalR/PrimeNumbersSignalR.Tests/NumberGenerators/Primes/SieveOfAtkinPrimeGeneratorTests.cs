@@ -1,13 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PrimeNumbersSignalR.NumberGenerators.Primes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
+namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
 {
     [TestClass()]
     public class SieveOfAtkinPrimeGeneratorTests
@@ -17,7 +14,6 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void FindAmountOfPrimesTestWithNegativeInteger()
         {
-
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
             primeGenerator.FindAmountOfPrimes(-1);
@@ -38,7 +34,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1);
 
-            Assert.Equals(primesGenerated.Count, 1);
+            Assert.AreEqual(1, primesGenerated.Count);
         }
 
         [TestMethod()]
@@ -47,7 +43,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1073741823);
 
-            Assert.Equals(primesGenerated.Count, 1073741823);
+            Assert.AreEqual(1073741823, primesGenerated.Count);
         }
 
         [TestMethod()]
@@ -56,7 +52,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
             IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(int.MaxValue);
 
-            Assert.Equals(primesGenerated.Count, int.MaxValue);
+            Assert.AreEqual(int.MaxValue, primesGenerated.Count);
         }
 
         // Test performance of generating 2000000 primes
@@ -83,7 +79,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
 
             IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(100000);
 
-            Assert.Equals(primesGenerated.Count, 100000);
+            Assert.AreEqual(100000, primesGenerated.Count);
         }
 
         // Test that the primes generated match an existing selection of primes in the correct location in the list.
@@ -96,27 +92,27 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Tests
 
             // 140th prime is 811
             Assert.IsTrue(primesGenerated.Any(prime => prime == 811));
-            Assert.Equals(primesGenerated.IndexOf(811), 140);
+            Assert.AreEqual(140, primesGenerated.IndexOf(811));
 
             // 1713th prime is 14633
             Assert.IsTrue(primesGenerated.Any(prime => prime == 14633));
-            Assert.Equals(primesGenerated.IndexOf(14633), 1713);
+            Assert.AreEqual(1713, primesGenerated.IndexOf(14633));
 
             // 4649th prime is 44741
             Assert.IsTrue(primesGenerated.Any(prime => prime == 44741));
-            Assert.Equals(primesGenerated.IndexOf(44741), 4649);
+            Assert.AreEqual(4649, primesGenerated.IndexOf(44741));
 
             // 6765th prime is 67933 
             Assert.IsTrue(primesGenerated.Any(prime => prime == 67933));
-            Assert.Equals(primesGenerated.IndexOf(67933), 6765);
+            Assert.AreEqual(6765, primesGenerated.IndexOf(67933));
 
             // 9032nd prime is 93523 
             Assert.IsTrue(primesGenerated.Any(prime => prime == 93523));
-            Assert.Equals(primesGenerated.IndexOf(93523), 9032);
+            Assert.AreEqual(9032, primesGenerated.IndexOf(93523));
 
             // 10000th prime is 104729
             Assert.IsTrue(primesGenerated.Any(prime => prime == 104729));
-            Assert.Equals(primesGenerated.IndexOf(104729), 10000);
+            Assert.AreEqual(10000, primesGenerated.IndexOf(104729));
         }
     }
 }
