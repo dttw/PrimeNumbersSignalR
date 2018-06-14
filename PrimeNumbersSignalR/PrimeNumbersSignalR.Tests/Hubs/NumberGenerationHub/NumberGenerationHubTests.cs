@@ -14,7 +14,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
     {
         private Mock<INumberGenerationClientContract> numberGenerationContract = new Mock<INumberGenerationClientContract>();
 
-        // Should inject this rather than create concrete class.
+        // Should create a mock version of prime generator.
         private IPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
         private void TestGenerateAmountOfPrimes(int amountOfPrimes, Mock<INumberGenerationClientContract> numberGenerationContract)
