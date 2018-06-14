@@ -51,7 +51,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test method with 0
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<ArgumentOutOfRangeException>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(0, numberGenerationContract);
+            TestGenerateAmountOfPrimes(50000001, numberGenerationContract);
         }
 
         [TestMethod()]
@@ -69,7 +69,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test method with 1073741823
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(50000000, numberGenerationContract);
+            TestGenerateAmountOfPrimes(25000000, numberGenerationContract);
         }
 
         [TestMethod()]
@@ -78,7 +78,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
             // Test with maximum integer (2147483647)
             numberGenerationContract.Setup(contract => contract.generatedNumbers(It.IsAny<List<long>>())).Verifiable();
 
-            TestGenerateAmountOfPrimes(100000000, numberGenerationContract);
+            TestGenerateAmountOfPrimes(50000000, numberGenerationContract);
         }
     }
 }

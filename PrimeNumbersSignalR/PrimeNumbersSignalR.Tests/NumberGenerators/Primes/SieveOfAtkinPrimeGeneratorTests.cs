@@ -34,7 +34,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         public void FindAmountOfPrimesTestOutOfRangeGreaterThanMax()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            primeGenerator.FindAmountOfPrimes(100000001);
+            primeGenerator.FindAmountOfPrimes(50000001);
         }
 
         // Test method with 1 should return an list of longs with 1 entry
@@ -52,9 +52,9 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         public void FindAmountOfPrimesTestWithMidRangeInteger()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(50000000);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(25000000);
 
-            Assert.AreEqual(50000000, primesGenerated.Count);
+            Assert.AreEqual(25000000, primesGenerated.Count);
         }
 
         // Test method with 100000000 should return an list of longs with 100000000 entries
@@ -62,9 +62,9 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         public void FindAmountOfPrimesTestWithMaxRangeInteger()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(100000000);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(50000000);
 
-            Assert.AreEqual(100000000, primesGenerated.Count);
+            Assert.AreEqual(50000000, primesGenerated.Count);
         }
 
         // Test performance of generating 100000000 primes
@@ -76,7 +76,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             Stopwatch stopWatch = new Stopwatch();
 
             stopWatch.Start();
-            primeGenerator.FindAmountOfPrimes(100000000);
+            primeGenerator.FindAmountOfPrimes(50000000);
 
             TimeSpan generationDuration = stopWatch.Elapsed;
 
