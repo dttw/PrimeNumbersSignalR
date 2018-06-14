@@ -28,11 +28,20 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             primeGenerator.FindAmountOfPrimes(0);
         }
 
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void FindAmountOfPrimesTestWithOutOfRangeInteger()
+        {
+            SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
+            primeGenerator.FindAmountOfPrimes(100000001);
+        }
+
         [TestMethod()]
         public void FindAmountOfPrimesTestWithLowRangeInteger()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(1);
 
             Assert.AreEqual(1, primesGenerated.Count);
         }
@@ -41,18 +50,18 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         public void FindAmountOfPrimesTestWithMidRangeInteger()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(1073741823);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(50000000);
 
-            Assert.AreEqual(1073741823, primesGenerated.Count);
+            Assert.AreEqual(50000000, primesGenerated.Count);
         }
 
         [TestMethod()]
         public void FindAmountOfPrimesTestWithMaxRangeInteger()
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
-            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(int.MaxValue);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(100000000);
 
-            Assert.AreEqual(int.MaxValue, primesGenerated.Count);
+            Assert.AreEqual(100000000, primesGenerated.Count);
         }
 
         // Test performance of generating 2000000 primes
@@ -64,7 +73,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
             Stopwatch stopWatch = new Stopwatch();
 
             stopWatch.Start();
-            primeGenerator.FindAmountOfPrimes(2000000);
+            primeGenerator.FindAmountOfPrimes(100000000);
 
             TimeSpan generationDuration = stopWatch.Elapsed;
 
@@ -77,7 +86,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
-            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(100000);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(100000);
 
             Assert.AreEqual(100000, primesGenerated.Count);
         }
@@ -88,7 +97,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
         {
             SieveOfAtkinPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
 
-            IList<int> primesGenerated = primeGenerator.FindAmountOfPrimes(10000);
+            IList<long> primesGenerated = primeGenerator.FindAmountOfPrimes(10000);
 
             // 140th prime is 811
             Assert.IsTrue(primesGenerated.Any(prime => prime == 811));
