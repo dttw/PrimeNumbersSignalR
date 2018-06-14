@@ -83,6 +83,7 @@ The algorithm:
             SetupPrimeSieve(primeLimit);
             CheckRemainders();
             RemovePrimeSquares();
+            IncludePrimesInResult();
         }
 
         private void SetupPrimeSieve(long primeLimit)
@@ -182,6 +183,18 @@ The algorithm:
             for (long notPrime = primeSquared; notPrime <= primeLimit; notPrime += primeSquared)
             {
                 primeCandidates[notPrime] = false;
+            }
+        }
+
+        private void IncludePrimesInResult()
+        {
+            // Loop through the list of candidate primes and include them in the primes list to be returned if they're still marked as true.
+            for (long primeCandidate = 5 + 1; primeCandidate <= primeLimit; primeCandidate++)
+            {
+                if (primeCandidates[primeCandidate])
+                {
+                    primesFound.Add(primeCandidate);
+                }
             }
         }
     }
