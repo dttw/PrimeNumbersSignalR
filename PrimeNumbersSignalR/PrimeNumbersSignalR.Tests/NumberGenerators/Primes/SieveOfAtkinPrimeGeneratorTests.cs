@@ -80,7 +80,7 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves.Tests
 
             TimeSpan generationDuration = stopWatch.Elapsed;
 
-            Assert.Inconclusive(generationDuration.ToString());
+            Assert.IsTrue(generationDuration < TimeSpan.FromSeconds(10));
         }
 
         // Test that the amount of Primes returned matches the amount requested.
