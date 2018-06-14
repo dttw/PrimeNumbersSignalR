@@ -41,7 +41,7 @@ The algorithm:
         private long limitSquareRoot = 0;
         private long primeLimit = 0;
 
-        public int MaxPrimeLimit => 50000000;
+        public int MaxPrimeLimit { get; } = 10000000;
 
         public SieveOfAtkinPrimeGenerator()
         {
