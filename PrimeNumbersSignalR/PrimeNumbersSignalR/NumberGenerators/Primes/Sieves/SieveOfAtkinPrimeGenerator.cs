@@ -57,9 +57,11 @@ The algorithm:
                 throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", "100000000");
             }
 
-            // TODO: Approximate the limit based on the amount of primes requested
+            // Approximate the limit based on the amount of primes requested
+            primeLimit = PrimeSieves.ApproximatePrimeLimit(amountOfPrimes);
+
             // TODO: Check that the limit isn't out of range.
-            StartPrimeSieve(PrimeSieves.ApproximatePrimeLimit(amountOfPrimes));
+            SieveForPrimes(primeLimit);
 
             return primesFound.Take(amountOfPrimes).ToList();
         }
@@ -71,12 +73,18 @@ The algorithm:
                 throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", "100000000");
             }
 
-            StartPrimeSieve(primeLimit);
+            SieveForPrimes(primeLimit);
 
             return primesFound;
         }
 
-        private void StartPrimeSieve(long primeLimit)
+        private void SieveForPrimes(long primeLimit)
+        {
+            SetupPrimeSieve(primeLimit);
+            CheckRemainders();
+        }
+
+        private void SetupPrimeSieve(long primeLimit)
         {
             this.primeLimit = primeLimit;
 
@@ -86,8 +94,66 @@ The algorithm:
 
             // Square the limit for use during sieving.
             limitSquareRoot = (long)Math.Sqrt(primeLimit);
+        }
 
+        private void CheckRemainders()
+        {
+            // Algorithm step 3
+            // Check the remainders in parallel in the correct sequence.
+            Parallel.For(1, limitSquareRoot, primeCandidate => AllCandidatesOddForm(primeCandidate));
+            Parallel.For(1, limitSquareRoot, primeCandidate => OddCandidatesEvenForm(primeCandidate));
+            Parallel.For(1, limitSquareRoot, primeCandidate => AllCandidatesAllForms(primeCandidate));
+        }
 
+        // Not sure this is a valid name for this method.
+        private void AllCandidatesOddForm(long primeCandidate)
+        {
+            // all x's 
+            // odd y's
+            for (long uptoLimitSquareRoot = 1; uptoLimitSquareRoot <= limitSquareRoot; uptoLimitSquareRoot++)
+            {
+                //3.1) If r is 1, 13, 17, 29, 37, 41, 49, or 53, flip the entry for each possible solution to 4x2 + y2 = n.
+                long quadForm = 4 * primeCandidate * primeCandidate + uptoLimitSquareRoot * uptoLimitSquareRoot;
+
+                if (quadForm <= primeLimit && (quadForm % 12 == 1 || quadForm % 12 == 5))
+                {
+                    primeCandidates[quadForm] ^= true;
+                }
+            }
+        }
+
+        // Not sure this is a valid name for this method.
+        private void OddCandidatesEvenForm(long primeCandidate)
+        {
+            // only odd x's
+            // and even y's
+            for (long uptoLimitSquareRoot = 1; uptoLimitSquareRoot <= limitSquareRoot; uptoLimitSquareRoot++)
+            {
+                //3.2) If r is 7, 19, 31, or 43, flip the entry for each possible solution to 3x2 + y2 = n.
+                long quadForm = 3 * primeCandidate * primeCandidate + uptoLimitSquareRoot * uptoLimitSquareRoot;
+
+                if (quadForm <= primeLimit && quadForm % 12 == 7)
+                {
+                    primeCandidates[quadForm] ^= true;
+                }
+            }
+        }
+
+        // Not sure this is a valid name for this method.
+        private void AllCandidatesAllForms(long primeCandidate)
+        {
+            //all even/odd
+            // odd/even combos
+            for (long uptoLimitSquareRoot = 1; uptoLimitSquareRoot <= limitSquareRoot; uptoLimitSquareRoot++)
+            {
+                // 3.3) If r is 11, 23, 47, or 59, flip the entry for each possible solution to 3x2 − y2 = n when x > y.
+                long quadForm = 3 * primeCandidate * primeCandidate - uptoLimitSquareRoot * uptoLimitSquareRoot;
+
+                if (primeCandidate > uptoLimitSquareRoot && quadForm <= primeLimit && quadForm % 12 == 11)
+                {
+                    primeCandidates[quadForm] ^= true;
+                }
+            }
         }
     }
 }
