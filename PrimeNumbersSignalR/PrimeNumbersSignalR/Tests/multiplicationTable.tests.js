@@ -395,7 +395,7 @@ describe('Tests for createMultiplicationTableRow.',
             it('Should return an html row containing the correct values',
 
                 function () {
-                    var generatedTableRow = createMultiplicationTableRow(1, [1, 2, 3]);
+                    var generatedTableRow = createMultiplicationTableRow(3, [1, 2, 3]);
 
                     expect(generatedTableRow.is('tr')).toBeTruthy();
 
