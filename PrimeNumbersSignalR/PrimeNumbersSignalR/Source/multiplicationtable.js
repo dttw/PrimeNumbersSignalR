@@ -31,11 +31,35 @@ function createMultiplicationTableBody(tableNumbers) {
 }
 
 function createMultiplicationTableRow(multiplier, tableNumbers) {
-    // TODO: Create table body
-    // TODO: return table body
+    var tableRow = $('<tr></tr>');
+    var factorCell = $('<td></td>').addClass('factorCell');
+
+    var row = tableRow.clone();
+
+    //Create the cell showing the multiplier for the row.
+    row.append(factorCell.clone().text(multiplier));
+
+    // Create each of the cells for the multiplier * each number in the list of table numbers
+    row.append(
+        tableNumbers.forEach(
+            function (multiplicand) {
+                row.append(createMultiplicationTableCell(multiplier * multiplicand));
+            }));
+
+    return row;
+
 }
 
 function createMultiplicationTableCell(multiplier, multiplicand) {
+
+    if (multiplier < 0) {
+        return 'You must specify a multiplier >= 0.';
+    }
+
+    if (multiplicand < 0) {
+        return 'You must specify a multiplicand >= 0.';
+    }
+
     //Create table cell
     var tableCell = $('<td></td>').clone();
 
