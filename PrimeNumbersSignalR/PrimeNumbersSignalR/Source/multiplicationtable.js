@@ -21,10 +21,10 @@ function createMultiplicationTable(tableNumbers, tableClass) {
     var table = $('<table></table>').addClass(tableClass);
 
     //Create header and add to table
-    table.append(this.multiplicationTableHeader(tableNumbers));
+    table.append(createMultiplicationTableHeader(tableNumbers));
 
     //Create body and add to table
-    table.append(this.multiplicationTableBody(tableNumbers));
+    table.append(createMultiplicationTableBody(tableNumbers));
 
     // Return table
     return table;
