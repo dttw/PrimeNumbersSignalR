@@ -50,10 +50,50 @@ describe("Create a number generation hub.",
                 expect(hub.server.generateAmountOfPrimes).not(typeof 'undefined').not(null);
             }
         );
+    }
+);
 
-// Test connectToNumberGenerationHub with null hub
-// Test connectToNumberGenerationHub with wrong parameter type
-// Test connectToNumberGenerationHub with valid hub
+describe("Connect to number generation Hub.",
+    // Test connectToNumberGenerationHub with null hub
+    function () {
+        it("Should return message that a hub is required",
+
+            function () {
+                var message = connectToNumberGenerationHub(null);
+
+                expect(message).toBe("You must specify a hub to start the connection.");
+            });
+    }
+    ,
+    // Test connectToNumberGenerationHub with wrong parameter type
+    function () {
+        it("Should return a message unable to connect due to invalid Hub",
+
+            function () {
+                var message = connectToNumberGenerationHub("");
+
+                expect(message).toBe("You must specify a message Div.");
+            });
+    }
+    ,
+    // Test connectToNumberGenerationHub with valid hub
+    function () {
+        it("Should change the connection state of the supplied hub to connected ",
+
+            function () {
+                var numberGenerationHub = createNumberGenerationHub("messages");
+
+                connectToNumberGenerationHub(numberGenerationHub);
+
+                expect(numberGenerationHub.state).toBe(1);
+            });
+    }
+);
+
+
+
+
+
 
 // Test generatePrimeMultiplicationTable with null amountOfPrimes
 // Test generatePrimeMultiplicationTable with non int amountOfPrimes
