@@ -10,8 +10,6 @@ namespace PrimeNumbersSignalR.NumberGenerators.Primes
     {
         int MaxPrimeLimit { get; }
 
-        IList<long> FindPrimesUpTo(int primeLimit);
-
         IList<long> FindAmountOfPrimes(int amountOfPrimes);
     }
 }

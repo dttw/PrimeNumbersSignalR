@@ -68,18 +68,6 @@ The algorithm:
             return primesFound.Take(amountOfPrimes).ToList();
         }
 
-        public IList<long> FindPrimesUpTo(int primeLimit)
-        {
-            if (primeLimit <= 0 || primeLimit > MaxPrimeLimit)
-            {
-                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", MaxPrimeLimit.ToString());
-            }
-
-            SieveForPrimes(primeLimit);
-
-            return primesFound;
-        }
-
         private void SieveForPrimes(long primeLimit)
         {
             SetupPrimeSieve(primeLimit);
