@@ -2,14 +2,13 @@
 /// <reference path='../Source/numberGenerationHub.js' />
 /// <reference path='../Scripts/jquery-3.3.1.min.js' />
 /// <reference path='../Scripts/jquery.signalR-2.2.3.min.js' />
-/// <reference path='../Scripts/signalrHubs.js' />
+/// <reference path='../SignalR/signalrHubs.js' />
 
 describe('Tests for createNumberGenerationHub.',
     // Test createNumberGenerationHub with null messageDiv
     describe('Try to create a hub with no message div defined.',
         function () {
             it('Should return message that a message Div is required',
-
                 function () {
                     var message = createNumberGenerationHub(null);
 
@@ -22,7 +21,6 @@ describe('Tests for createNumberGenerationHub.',
         // Test createNumberGenerationHub with empty string messageDiv
         function () {
             it('Should return message that a message Div is required',
-
                 function () {
                     var message = createNumberGenerationHub('');
 
@@ -35,7 +33,6 @@ describe('Tests for createNumberGenerationHub.',
         // Test createNumberGenerationHub with wrong parameter type
         function () {
             it('Should return message that a message Div must be a string',
-
                 function () {
                     var message = createNumberGenerationHub(1);
 
@@ -49,7 +46,6 @@ describe('Tests for createNumberGenerationHub.',
         // has maxPrimeLimit, primesRequestedOutOfRange and generatedNumbers methods
         function () {
             it('Should return a hub with maxPrimeLimit, primesRequestedOutOfRange and generatedNumbers client methods.',
-
                 function () {
                     var generationHub = createNumberGenerationHub('messages');
 
@@ -70,7 +66,6 @@ describe('Tests for connectToNumberGenerationHub.',
         // Test connectToNumberGenerationHub with null hub
         function () {
             it('Should return message that a hub is required',
-
                 function () {
                     var message = connectToNumberGenerationHub(null);
 
@@ -83,7 +78,6 @@ describe('Tests for connectToNumberGenerationHub.',
         // Test connectToNumberGenerationHub with wrong parameter type
         function () {
             it('Should return a message unable to connect due to invalid Hub',
-
                 function () {
                     var message = connectToNumberGenerationHub('');
 
@@ -91,20 +85,19 @@ describe('Tests for connectToNumberGenerationHub.',
                 });
         }
     )
-    ,
-    describe('Try to connect to hub with valid hub.',
-        // Test connectToNumberGenerationHub with valid hub
-        function () {
-            it('Should return the hub that was passed in ',
+    //,
+    //describe('Try to connect to hub with valid hub.',
+    //    // Test connectToNumberGenerationHub with valid hub
+    //    function () {
+    //        it('Should return the hub that was passed in ',
+    //            function () {
+    //                var numberGenerationHub = createNumberGenerationHub('messages');
+    //                numberGenerationHub = connectToNumberGenerationHub(numberGenerationHub);
 
-                function () {
-                    var numberGenerationHub = createNumberGenerationHub('messages');
-                    numberGenerationHub = connectToNumberGenerationHub(numberGenerationHub);
-
-                    expect(numberGenerationHub.client.maxPrimeLimit).toBeDefined();
-                });
-        }
-    )
+    //                expect(numberGenerationHub.client.maxPrimeLimit).toBeDefined();
+    //            });
+    //    }
+    //)
 );
 
 describe('Tests for generatePrimeMultiplicationTable.',
@@ -113,9 +106,9 @@ describe('Tests for generatePrimeMultiplicationTable.',
         // Test generatePrimeMultiplicationTable with null amountOfPrimes
         function () {
             it('Should return message that the number of primes to generate is required.',
-
                 function () {
-                    var message = generatePrimeMultiplicationTable(null);
+                    var numberGenerationHub = createNumberGenerationHub('messages');
+                    var message = generatePrimeMultiplicationTable(null, numberGenerationHub);
 
                     expect(message).toBe('You must specify the amount of primes to generate.');
                 });
@@ -126,9 +119,9 @@ describe('Tests for generatePrimeMultiplicationTable.',
         // Test generatePrimeMultiplicationTable with non int amountOfPrimes
         function () {
             it('Should return a message that the number of primes to generate must be a number.',
-
                 function () {
-                    var message = generatePrimeMultiplicationTable('NotValidNumber');
+                    var numberGenerationHub = createNumberGenerationHub('messages');
+                    var message = generatePrimeMultiplicationTable('NotValidNumber', numberGenerationHub);
 
                     expect(message).toBe('The number of primes to generate must be a number > 0.');
                 });
@@ -139,9 +132,9 @@ describe('Tests for generatePrimeMultiplicationTable.',
         // Test generatePrimeMultiplicationTable with negative int amountOfPrimes
         function () {
             it('Should return a message that the number of primes to generate must be > 0.',
-
                 function () {
-                    var message = generatePrimeMultiplicationTable(-1);
+                    var numberGenerationHub = createNumberGenerationHub('messages');
+                    var message = generatePrimeMultiplicationTable(-1, numberGenerationHub);
 
                     expect(message).toBe('The number of primes to generate must be a number > 0.');
                 });
@@ -152,9 +145,9 @@ describe('Tests for generatePrimeMultiplicationTable.',
         // Test generatePrimeMultiplicationTable with 0 amountOfPrimes
         function () {
             it('Should return a message that the number of primes to generate must be > 0.',
-
                 function () {
-                    var message = generatePrimeMultiplicationTable(0);
+                    var numberGenerationHub = createNumberGenerationHub('messages');
+                    var message = generatePrimeMultiplicationTable(0, numberGenerationHub);
 
                     expect(message).toBe('The number of primes to generate must be a number > 0.');
                 });
@@ -165,9 +158,8 @@ describe('Tests for generatePrimeMultiplicationTable.',
         // Test generatePrimeMultiplicationTable with null generationHub
         function () {
             it('Should return a message that a valid Hub must be supplied.',
-
                 function () {
-                    var message = generatePrimeMultiplicationTable('');
+                    var message = generatePrimeMultiplicationTable(1, null);
 
                     expect(message).toBe('You must specify a valid Generation Hub.');
                 });
