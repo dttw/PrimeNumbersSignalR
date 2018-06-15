@@ -52,6 +52,14 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
 
 function createMultiplicationTableCell(multiplier, multiplicand) {
 
+    if (typeof multiplier === 'undefined' || multiplier === null) {
+        return 'You must specify a multiplier.';
+    }
+
+    if (typeof multiplicand === 'undefined' || multiplicand === null) {
+        return 'You must specify a multiplicand.';
+    }
+
     if (multiplier < 0) {
         return 'You must specify a multiplier >= 0.';
     }
