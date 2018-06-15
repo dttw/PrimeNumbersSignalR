@@ -21,8 +21,11 @@ function createMultiplicationTableHeaderRow(tableNumbers) {
 }
 
 function createMultiplicationTableHeaderCell(multiplicand) {
-    // TODO: Create header cell
-    // TODO: Return header cell
+    // Create header cell
+    var tableHeaderCell = $('<th></th>').addClass('factorCell');
+
+    // Return header cell
+    return tableHeaderCell.clone().text(multiplicand);
 }
 
 function createMultiplicationTableBody(tableNumbers) {
