@@ -23,8 +23,6 @@
         createMultiplicationTable(numbers, '#multiplicationTable', 'table table-striped');
     }
 
-    connectToNumberGenerationHub(generationHub);
-
     return generationHub;
 }
 
@@ -49,7 +47,7 @@ function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
         return 'You must specify the amount of primes to generate.';
     }
 
-    if (amountOfPrimes <= 0) {
+    if (amountOfPrimes <= 0 || typeof amountOfPrimes === 'string') {
         return 'The number of primes to generate must be a number > 0.';
     }
 
