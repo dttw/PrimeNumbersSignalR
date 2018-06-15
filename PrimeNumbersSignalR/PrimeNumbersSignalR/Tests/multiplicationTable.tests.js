@@ -376,12 +376,14 @@ describe('Tests for createMultiplicationTableRow.',
     // Test createMultiplicationTableRow with valid multiplier & tableNumbers
     describe('Try to create a table row with array of strings for table numbers.',
         function () {
-            it('Should return message that an array of table numbers is required',
+            it('Should return an html row containing the correct values',
 
                 function () {
-                    var message = createMultiplicationTableRow(1, [1, 2, 3]);
+                    var generatedTableRow = createMultiplicationTableRow(1, [1, 2, 3]);
 
-                    expect(header.html()).toContain('<tr>');
+                    expect(generatedTableRow.is('tr')).toBeTruthy();
+
+                    expect(generatedTableRow.html).toContain('9');
                 });
         }
     )
@@ -482,7 +484,7 @@ describe('Tests for createMultiplicationTableCell.',
     // Test createMultiplicationTableCell with valid multiplier & multiplicand
     describe('Try to create a table cell with valid multiplier and multiplicand.',
         function () {
-            it('Should return return an html table cell with the correct multiplied value.',
+            it('Should return an html table cell with the correct multiplied value.',
 
                 function () {
                     var generatedTableCell = createMultiplicationTableCell(1, 2);
