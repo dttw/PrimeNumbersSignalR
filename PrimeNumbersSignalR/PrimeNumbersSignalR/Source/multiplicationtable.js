@@ -28,8 +28,22 @@ function createMultiplicationTableHeader(tableNumbers) {
 }
 
 function createMultiplicationTableHeaderRow(tableNumbers) {
-    // TODO: Create header row
-    // TODO: Return header row
+    //creates header row
+    var headerRow = $('<tr></tr>');
+
+    // Creates the cell for the header with style
+    var tableHeaderCell = $('<th></th>').addClass('factorCell');
+
+    // Adds the X to the top left corner of the table
+    headerRow.append(tableHeaderCell.clone().text('X'));
+
+    // Adds each number for the table into the header row
+    tableNumbers.forEach(
+        function (multiplicand) {
+            headerRow.append(createMultiplicationTableHeaderCell(multiplicand));
+        });
+
+    return headerRow;
 }
 
 function createMultiplicationTableHeaderCell(multiplicand) {
