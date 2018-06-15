@@ -1,7 +1,26 @@
 ﻿
 function createNumberGenerationHub(messageDiv) {
-    // TODO: Create and return the hub connection
-    return "You must specify a message Div.";
+
+    if (typeof messageDiv === 'undefined' || messageDiv === null || messageDiv === '') {
+        return "You must specify a message Div.";
+    }
+
+    var generationHub = $.connection.numberGenerationHub;
+
+    generationHub.client.maxPrimeLimit = function (maxPrimes) {
+        displayMessage(messageDiv, 'You may generate a maximum of ' + maxPrimes + ' primes.');
+    };
+
+    generationHub.client.primesRequestedOutOfRange = function (outOfRangeMessage) {
+        displayMessage(messageDiv, outOfRangeMessage);
+    };
+
+    generationHub.client.generatedNumbers = function (numbers) {
+        var multiplicationTable = new MultiplicationTable();
+        createMultiplicationTable(numbers, '#multiplicationTable', 'table table-striped');
+    }
+
+    return generationHub;
 }
 
 function connectToNumberGenerationHub(generationHub) {
