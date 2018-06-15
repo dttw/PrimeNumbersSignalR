@@ -295,7 +295,6 @@ describe("Tests for createMultiplicationTableBody.",
 
 
 
-// Test createMultiplicationTableRow with null tableNumbers
 // Test createMultiplicationTableRow with empty array for tableNumbers
 // Test createMultiplicationTableRow with non int tableNumbers
 // Test createMultiplicationTableRow with valid multiplier & tableNumbers
@@ -337,6 +336,19 @@ describe("Tests for createMultiplicationTableRow.",
                     var message = createMultiplicationTableRow("NaN");
 
                     expect(message).toBe("You must specify an int for multiplier.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTableRow with null tableNumbers
+    describe("Try to create a table row with null array of table numbers.",
+        function () {
+            it("Should return message that an array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTableRow(1, null);
+
+                    expect(message).toBe("You must specify an array of ints for table numbers.");
                 });
         }
     )
