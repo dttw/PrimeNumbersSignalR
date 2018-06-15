@@ -51,13 +51,13 @@ describe("Tests for createNumberGenerationHub.",
             it("Should return a hub with maxPrimeLimit, primesRequestedOutOfRange and generatedNumbers client methods.",
 
                 function () {
-                    var generationHub = createNumberGenerationHub("messages");
+                    var generationHub = createNumberGenerationHub('messages');
 
-                    expect(generationHub.client.maxPrimeLimit).not(typeof 'undefined').not(null);
-                    expect(generationHub.client.primesRequestedOutOfRange).not(typeof 'undefined').not(null);
-                    expect(generationHub.client.generatedNumbers).not(typeof 'undefined').not(null);
-                    expect(generationHub.server.maxPrimeLimit).not(typeof 'undefined').not(null);
-                    expect(hub.server.generateAmountOfPrimes).not(typeof 'undefined').not(null);
+                    expect(generationHub.client.maxPrimeLimit).toBeDefined();
+                    expect(generationHub.client.primesRequestedOutOfRange).toBeDefined();
+                    expect(generationHub.client.generatedNumbers).toBeDefined();
+                    expect(generationHub.server.maxPrimeLimit).toBeDefined();
+                    expect(generationHub.server.generateAmountOfPrimes).toBeDefined();
                 }
             );
         }
