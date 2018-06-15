@@ -1,4 +1,7 @@
-﻿// Test createMultiplicationTable with null table numbers
+﻿/// <reference path="../Scripts/jasmine/jasmine.js" />
+/// <reference path="../Source/multiplicationtable.js" />
+
+// Test createMultiplicationTable with null table numbers
 // Test createMultiplicationTable with non int table numbers
 // Test createMultiplicationTable with null table class
 // Test createMultiplicationTable with non string table class
