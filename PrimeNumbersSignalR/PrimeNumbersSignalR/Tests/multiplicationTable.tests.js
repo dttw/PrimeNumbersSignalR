@@ -77,13 +77,13 @@ describe('Tests for createMultiplicationTable.',
 
                     expect(generatedTable.is('table')).toBeTruthy();
 
-                    expect(generatedTable.html).toContain('X');
-                    expect(generatedTable.html).toContain('1');
-                    expect(generatedTable.html).toContain('2');
-                    expect(generatedTable.html).toContain('3');
-                    expect(generatedTable.html).toContain('4');
-                    expect(generatedTable.html).toContain('6');
-                    expect(generatedTable.html).toContain('9');
+                    expect(generatedTable.html()).toContain('X');
+                    expect(generatedTable.html()).toContain('1');
+                    expect(generatedTable.html()).toContain('2');
+                    expect(generatedTable.html()).toContain('3');
+                    expect(generatedTable.html()).toContain('4');
+                    expect(generatedTable.html()).toContain('6');
+                    expect(generatedTable.html()).toContain('9');
                 });
         }
     )
@@ -138,7 +138,7 @@ describe('Tests for createMultiplicationTableHeader.',
 
                     expect(generatedTableHeader.is('thead')).toBeTruthy();
 
-                    expect(generatedTableHeader.html).toContain('X');
+                    expect(generatedTableHeader.html()).toContain('X');
 
                 });
         }
@@ -194,7 +194,7 @@ describe('Tests for createMultiplicationTableHeaderRow.',
 
                     expect(generatedTableHeader.is('thead')).toBeTruthy();
 
-                    expect(generatedTableHeader.html).toContain('3');
+                    expect(generatedTableHeader.html()).toContain('3');
                 });
         }
     )
@@ -249,7 +249,7 @@ describe('Tests for createMultiplicationTableHeaderCell.',
 
                     expect(generatedHeaderCell.is('th')).toBeTruthy();
 
-                    expect(generatedHeaderCell.html).toContain('1');
+                    expect(generatedHeaderCell.html()).toContain('1');
                 });
         }
     )
@@ -304,7 +304,7 @@ describe('Tests for createMultiplicationTableBody.',
 
                     expect(generatedTableBody.is('tbody')).toBeTruthy();
 
-                    expect(generatedTableBody.html).toContain('9');
+                    expect(generatedTableBody.html()).toContain('9');
                 });
         }
     )
@@ -399,7 +399,7 @@ describe('Tests for createMultiplicationTableRow.',
 
                     expect(generatedTableRow.is('tr')).toBeTruthy();
 
-                    expect(generatedTableRow.html).toContain('9');
+                    expect(generatedTableRow.html()).toContain('9');
                 });
         }
     )
@@ -507,7 +507,7 @@ describe('Tests for createMultiplicationTableCell.',
 
                     expect(generatedTableCell.is('td')).toBeTruthy();
 
-                    expect(generatedTableCell.html).toContain('2');
+                    expect(generatedTableCell.html()).toContain('2');
                 });
         }
     )
