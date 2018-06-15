@@ -371,17 +371,27 @@ describe("Tests for createMultiplicationTableRow.",
                 });
         }
     )
+    ,
+    // Test createMultiplicationTableRow with valid multiplier & tableNumbers
+    describe("Try to create a table row with array of strings for table numbers.",
+        function () {
+            it("Should return message that an array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTableRow(1, [1, 2, 3]);
+
+                    expect(header.html()).toContain('<tr>');
+                });
+        }
+    )
 )
 
-
-// Test createMultiplicationTableRow with valid multiplier & tableNumbers
-// Test that createMultiplicationTableRow returns a valid table row
-
-
 // Test createMultiplicationTableCell with null multiplier
+// Test createMultiplicationTableCell with  -1 multiplier
 // Test createMultiplicationTableCell with non int multiplier
 // Test createMultiplicationTableCell with valid multiplier
 // Test createMultiplicationTableCell with null multiplicand
+// Test createMultiplicationTableCell with -1 multiplicand
 // Test createMultiplicationTableCell with non int multiplicand
 // Test createMultiplicationTableCell with valid multiplier & multiplicand
 // Test that createMultiplicationTableCell returns a valid table cell
