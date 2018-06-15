@@ -9,7 +9,7 @@ describe('Tests for createMultiplicationTable.',
             it('Should return message that a valid array of table numbers is required',
 
                 function () {
-                    var message = createMultiplicationTable(null, '');
+                    var message = createMultiplicationTable(null, 'tableClass');
 
                     expect(message).toBe('You must specify an array of ints to generate a table.');
                 });
@@ -21,7 +21,7 @@ describe('Tests for createMultiplicationTable.',
             it('Should return message that a valid array of table numbers is required',
 
                 function () {
-                    var message = createMultiplicationTable([], '');
+                    var message = createMultiplicationTable([], 'tableClass');
 
                     expect(message).toBe('You must specify an array of ints to generate a table.');
                 });
@@ -34,7 +34,7 @@ describe('Tests for createMultiplicationTable.',
             it('Should return message that a valid array of table numbers is required',
 
                 function () {
-                    var message = createMultiplicationTable(['Not', 'Valid', 'Numbers'], '');
+                    var message = createMultiplicationTable(['Not', 'Valid', 'Numbers'], 'tableClass');
 
                     expect(message).toBe('You must specify an array of ints to generate a table.');
                 });
