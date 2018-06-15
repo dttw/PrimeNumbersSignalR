@@ -317,9 +317,9 @@ describe('Tests for createMultiplicationTableRow.',
             it('Should return message that a multipler is required',
 
                 function () {
-                    var message = createMultiplicationTableRow(null);
+                    var message = createMultiplicationTableRow(null, [1, 2, 3]);
 
-                    expect(message).toBe('You must specify a multiplier.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table row.');
                 });
         }
     )
@@ -332,7 +332,7 @@ describe('Tests for createMultiplicationTableRow.',
                 function () {
                     var message = createMultiplicationTableRow(0);
 
-                    expect(message).toBe('You must specify a multiplier >= 0.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table row.');
                 });
         }
     )
@@ -345,7 +345,7 @@ describe('Tests for createMultiplicationTableRow.',
                 function () {
                     var message = createMultiplicationTableRow('NaN');
 
-                    expect(message).toBe('You must specify an int for multiplier.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table row.');
                 });
         }
     )
@@ -358,7 +358,7 @@ describe('Tests for createMultiplicationTableRow.',
                 function () {
                     var message = createMultiplicationTableRow(1, null);
 
-                    expect(message).toBe('You must specify an array of ints for table numbers.');
+                    expect(message).toBe('You must specify an array of ints to generate a header.');
                 });
         }
     )
@@ -371,7 +371,7 @@ describe('Tests for createMultiplicationTableRow.',
                 function () {
                     var message = createMultiplicationTableRow(1, []);
 
-                    expect(message).toBe('You must specify an array of ints for table numbers.');
+                    expect(message).toBe('You must specify an array of ints to generate a header.');
                 });
         }
     )
