@@ -491,5 +491,3 @@ describe("Tests for createMultiplicationTableCell.",
         }
     )
 )
-
-
