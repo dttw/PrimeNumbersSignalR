@@ -6,7 +6,7 @@ function connectToNumberGenerationHub(generationHub) {
     // TODO: Start the hub connection and run any functions required after the connection starts
 }
 
-function generatePrimeMultiplicationTable(amountOfPrimes, hub) {
+function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
     // TODO: Send request to hub for amount of primes specified
 }
 
