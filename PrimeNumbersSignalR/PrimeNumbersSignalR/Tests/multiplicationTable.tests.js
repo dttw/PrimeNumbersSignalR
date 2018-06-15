@@ -1,13 +1,72 @@
 ﻿/// <reference path="../Scripts/jasmine/jasmine.js" />
 /// <reference path="../Source/multiplicationtable.js" />
 
-// Test createMultiplicationTable with null table numbers
-// Test createMultiplicationTable with non int table numbers
-// Test createMultiplicationTable with null table class
-// Test createMultiplicationTable with non string table class
-// Test createMultiplicationTable with valid table numbers & table class
-// Test that createMultiplicationTable returns a valid table
+describe("Tests for createMultiplicationTable.",
+    // Test createMultiplicationTable with null table numbers
+    describe("Try to create table with null passed as table numbers.",
+        function () {
+            it("Should return message that a valid array of table numbers is required",
 
+                function () {
+                    var message = createMultiplicationTable(null, "");
+
+                    expect(message).toBe("You must specify an array of ints to generate a table.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTable with non int table numbers
+    describe("Try to create table with strings passed as table numbers.",
+        function () {
+            it("Should return message that a valid array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTable(["Not", "Valid", "Numbers"], "");
+
+                    expect(message).toBe("You must specify an array of ints to generate a table.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTable with null table class
+    describe("Try to create table with null passed as table class.",
+        function () {
+            it("Should return message that a table class is required",
+
+                function () {
+                    var message = createMultiplicationTable([1, 2, 3], null);
+
+                    expect(message).toBe("You must specify a table class to generate a table.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTable with non string table class
+    describe("Try to create table with null passed as table class.",
+        function () {
+            it("Should return message that a table class is required",
+
+                function () {
+                    var message = createMultiplicationTable([1, 2, 3], "");
+
+                    expect(message).toBe("You must specify a table class to generate a table.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTable with valid table numbers & table class
+    describe("Try to create table with valid table numbers and table class.",
+        function () {
+            it("Should return an html table",
+
+                function () {
+                    var message = createMultiplicationTable([1, 2, 3], "");
+
+                    expect(message).toBe("You must specify a table class to generate a table.");
+                });
+        }
+    )
+);
 
 // Test createMultiplicationTableHeader with null table numbers
 // Test createMultiplicationTableHeader with non int table numbers
