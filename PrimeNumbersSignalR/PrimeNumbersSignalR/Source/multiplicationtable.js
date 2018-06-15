@@ -11,8 +11,13 @@ function createMultiplicationTable(tableNumbers, tableClass) {
 }
 
 function createMultiplicationTableHeader(tableNumbers) {
-    // TODO: Create table header
-    // TODO: Return table header
+    // Create table header
+    var tableHeader = $('<thead></thead>');
+
+    tableHeader.append(createMultiplicationTableHeaderRow(tableNumbers));
+
+    // Return table header
+    return tableHeader;
 }
 
 function createMultiplicationTableHeaderRow(tableNumbers) {
