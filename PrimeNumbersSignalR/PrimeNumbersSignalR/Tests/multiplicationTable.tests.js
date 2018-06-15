@@ -192,7 +192,7 @@ describe('Tests for createMultiplicationTableHeaderRow.',
                 function () {
                     var generatedTableHeader = createMultiplicationTableHeaderRow([1, 2, 3]);
 
-                    expect(generatedTableHeader.is('thead')).toBeTruthy();
+                    expect(generatedTableHeader.is('th')).toBeTruthy();
 
                     expect(generatedTableHeader.html()).toContain('3');
                 });
