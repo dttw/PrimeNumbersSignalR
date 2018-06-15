@@ -73,7 +73,7 @@ describe('Tests for createMultiplicationTable.',
             it('Should return an html table',
 
                 function () {
-                    var generatedTable = createMultiplicationTable([1, 2, 3], '');
+                    var generatedTable = createMultiplicationTable([1, 2, 3], 'tableClass');
 
                     expect(generatedTable.is('table')).toBeTruthy();
 
