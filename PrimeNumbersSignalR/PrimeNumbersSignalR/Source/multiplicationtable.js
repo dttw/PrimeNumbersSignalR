@@ -9,11 +9,7 @@ function createMultiplicationTable(tableNumbers, tableClass) {
         return 'You must specify a table class to generate a table.';
     }
 
-    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0) {
-        return 'You must specify an array of ints to generate a table.';
-    }
-
-    if (tableNumbers.some(isNaN)) {
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
         return 'You must specify an array of ints to generate a table.';
     }
 
@@ -31,6 +27,11 @@ function createMultiplicationTable(tableNumbers, tableClass) {
 }
 
 function createMultiplicationTableHeader(tableNumbers) {
+
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
+        return 'You must specify an array of ints to generate a header.';
+    }
+
     // Create table header
     var tableHeader = $('<thead></thead>');
 
@@ -41,6 +42,11 @@ function createMultiplicationTableHeader(tableNumbers) {
 }
 
 function createMultiplicationTableHeaderRow(tableNumbers) {
+
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
+        return 'You must specify an array of ints to generate a header.';
+    }
+
     //creates header row
     var headerRow = $('<tr></tr>');
 
