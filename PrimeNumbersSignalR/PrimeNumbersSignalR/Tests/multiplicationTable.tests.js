@@ -286,9 +286,11 @@ describe('Tests for createMultiplicationTableBody.',
             it('Should return an html table body',
 
                 function () {
-                    var tableBody = createMultiplicationTableBody([1, 2, 3]);
+                    var generatedTableBody = createMultiplicationTableBody([1, 2, 3]);
 
-                    expect(header.html()).toContain('<td>');
+                    expect(generatedTableBody.is('tbody')).toBeTruthy();
+
+                    expect(generatedTableBody.html).toContain('9');
                 });
         }
     )
