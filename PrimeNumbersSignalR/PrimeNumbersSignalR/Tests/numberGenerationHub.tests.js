@@ -95,13 +95,13 @@ describe('Tests for connectToNumberGenerationHub.',
     describe('Try to connect to hub with valid hub.',
         // Test connectToNumberGenerationHub with valid hub
         function () {
-            it('Should change the connection state of the supplied hub to connected ',
+            it('Should return the hub that was passed in ',
 
                 function () {
                     var numberGenerationHub = createNumberGenerationHub('messages');
                     numberGenerationHub = connectToNumberGenerationHub(numberGenerationHub);
 
-                    expect(generationHub.client.maxPrimeLimit).toBeDefined();
+                    expect(numberGenerationHub.client.maxPrimeLimit).toBeDefined();
                 });
         }
     )
