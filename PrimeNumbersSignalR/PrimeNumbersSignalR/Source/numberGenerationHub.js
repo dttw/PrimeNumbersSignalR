@@ -5,6 +5,10 @@ function createNumberGenerationHub(messageDiv) {
         return "You must specify a message Div.";
     }
 
+    if (typeof messageDiv !== 'string') {
+        return "Message div must be a valid string.";
+    }
+
     var generationHub = $.connection.numberGenerationHub;
 
     generationHub.client.maxPrimeLimit = function (maxPrimes) {
