@@ -80,6 +80,9 @@ function createMultiplicationTableHeaderCell(multiplicand) {
 
 function createMultiplicationTableBody(tableNumbers) {
     //  Create table body
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
+        return 'You must specify an array of ints to generate a header.';
+    }
 
     var tableBody = $('<tbody></tbody>');
 
