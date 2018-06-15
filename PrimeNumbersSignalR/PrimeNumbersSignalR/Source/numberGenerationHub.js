@@ -1,5 +1,7 @@
-﻿function createNumberGenerationHub(messageDiv) {
+﻿
+function createNumberGenerationHub(messageDiv) {
     // TODO: Create and return the hub connection
+    return "You must specify a message Div.";
 }
 
 function connectToNumberGenerationHub(generationHub) {
