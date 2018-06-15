@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using PrimeNumbersSignalR.NumberGenerators.Primes;
 using PrimeNumbersSignalR.NumberGenerators.Primes.Sieves;
+using PrimeNumbersSignalR.Tests.NumberGenerators.Primes;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -15,7 +16,7 @@ namespace PrimeNumbersSignalR.Hubs.Tests
         private Mock<INumberGenerationClientContract> numberGenerationContract = new Mock<INumberGenerationClientContract>();
 
         // Should create a mock version of prime generator.
-        private IPrimeGenerator primeGenerator = new SieveOfAtkinPrimeGenerator();
+        private IPrimeGenerator primeGenerator = new MockPrimeGenerator();
 
         private void TestGenerateAmountOfPrimes(int amountOfPrimes, Mock<INumberGenerationClientContract> numberGenerationContract)
         {
