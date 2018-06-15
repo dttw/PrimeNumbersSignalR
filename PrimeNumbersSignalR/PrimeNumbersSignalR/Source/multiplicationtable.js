@@ -66,6 +66,11 @@ function createMultiplicationTableHeaderRow(tableNumbers) {
 }
 
 function createMultiplicationTableHeaderCell(multiplicand) {
+
+    if (typeof multiplicand === 'undefined' || multiplicand === null || isNaN(multiplicand) || multiplicand < 0) {
+        return 'You must specify an non negative number to create a header cell.';
+    }
+
     // Create header cell
     var tableHeaderCell = $('<th></th>').addClass('factorCell');
 
@@ -90,16 +95,12 @@ function createMultiplicationTableBody(tableNumbers) {
 
 function createMultiplicationTableRow(multiplier, tableNumbers) {
 
-    if (typeof multiplier === 'undefined' || multiplier === null) {
-        return 'You must specify a multiplier.';
+    if (typeof multiplier === 'undefined' || multiplier === null || isNaN(multiplier) || multiplier < 0) {
+        return 'You must specify an non negative multiplier to create a table row.';
     }
 
-    if (typeof multiplier === 'string') {
-        return 'You must specify an int for multiplier.';
-    }
-
-    if (multiplier < 0) {
-        return 'You must specify a multiplier >= 0.';
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
+        return 'You must specify an array of ints to generate a header.';
     }
 
     var tableRow = $('<tr></tr>');
@@ -122,28 +123,12 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
 
 function createMultiplicationTableCell(multiplier, multiplicand) {
 
-    if (typeof multiplier === 'undefined' || multiplier === null) {
-        return 'You must specify a multiplier.';
+    if (typeof multiplier === 'undefined' || multiplier === null || isNaN(multiplier) || multiplier < 0) {
+        return 'You must specify an non negative multiplier to create a table cell.';
     }
 
-    if (typeof multiplicand === 'undefined' || multiplicand === null) {
-        return 'You must specify a multiplicand.';
-    }
-
-    if (typeof multiplier === 'string') {
-        return 'You must specify an int for multiplier.';
-    }
-
-    if (typeof multiplicand === 'string') {
-        return 'You must specify an int for multiplicand.';
-    }
-
-    if (multiplier < 0) {
-        return 'You must specify a multiplier >= 0.';
-    }
-
-    if (multiplicand < 0 || typeof amountOfPrimes === 'string') {
-        return 'You must specify a multiplicand >= 0.';
+    if (typeof multiplicand === 'undefined' || multiplicand === null || isNaN(multiplicand) || multiplicand < 0) {
+        return 'You must specify an non negative multiplicand to create a table cell.';
     }
 
     //Create table cell

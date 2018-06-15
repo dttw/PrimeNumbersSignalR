@@ -192,7 +192,7 @@ describe('Tests for createMultiplicationTableHeaderRow.',
                 function () {
                     var generatedTableHeader = createMultiplicationTableHeaderRow([1, 2, 3]);
 
-                    expect(generatedTableHeader.is('th')).toBeTruthy();
+                    expect(generatedTableHeader.is('tr')).toBeTruthy();
 
                     expect(generatedTableHeader.html()).toContain('3');
                 });
@@ -209,7 +209,7 @@ describe('Tests for createMultiplicationTableHeaderCell.',
                 function () {
                     var message = createMultiplicationTableHeaderCell(null);
 
-                    expect(message).toBe('You must specify an non negative number to create a table cell.');
+                    expect(message).toBe('You must specify an non negative number to create a header cell.');
                 });
         }
     )
@@ -221,7 +221,7 @@ describe('Tests for createMultiplicationTableHeaderCell.',
                 function () {
                     var message = createMultiplicationTableHeaderCell(-1);
 
-                    expect(message).toBe('You must specify an non negative number to create a table cell.');
+                    expect(message).toBe('You must specify an non negative number to create a header cell.');
                 });
         }
     )
@@ -234,7 +234,7 @@ describe('Tests for createMultiplicationTableHeaderCell.',
                 function () {
                     var message = createMultiplicationTableHeaderCell('NaN');
 
-                    expect(message).toBe('You must specify a number to create a table cell.');
+                    expect(message).toBe('You must specify an non negative number to create a header cell.');
                 });
         }
     )
@@ -414,7 +414,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell(null, 1);
 
-                    expect(message).toBe('You must specify a multiplier.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table cell.');
                 });
         }
     )
@@ -427,7 +427,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell(-1, 1);
 
-                    expect(message).toBe('You must specify a multiplier >= 0.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table cell.');
                 });
         }
     )
@@ -440,7 +440,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell('NaN', 1);
 
-                    expect(message).toBe('You must specify an int for multiplier.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table cell.');
                 });
         }
     )
@@ -453,7 +453,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell('NaN', 1);
 
-                    expect(message).toBe('You must specify an int for multiplier.');
+                    expect(message).toBe('You must specify an non negative multiplier to create a table cell.');
                 });
         }
     )
@@ -466,7 +466,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell(1, null);
 
-                    expect(message).toBe('You must specify a multiplicand.');
+                    expect(message).toBe('You must specify an non negative multiplicand to create a table cell.');
                 });
         }
     )
@@ -479,7 +479,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell(1, -1);
 
-                    expect(message).toBe('You must specify a multiplicand >= 0.');
+                    expect(message).toBe('You must specify an non negative multiplicand to create a table cell.');
                 });
         }
     )
@@ -492,7 +492,7 @@ describe('Tests for createMultiplicationTableCell.',
                 function () {
                     var message = createMultiplicationTableCell(1, 'NaN');
 
-                    expect(message).toBe('You must specify an int for multiplicand.');
+                    expect(message).toBe('You must specify an non negative multiplicand to create a table cell.');
                 });
         }
     )
