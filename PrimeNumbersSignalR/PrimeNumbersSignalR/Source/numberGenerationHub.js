@@ -1,11 +1,11 @@
 ﻿function createNumberGenerationHub(messageDiv) {
 
     if (typeof messageDiv === 'undefined' || messageDiv === null || messageDiv === '') {
-        return "You must specify a message Div.";
+        return 'You must specify a message Div.';
     }
 
     if (typeof messageDiv !== 'string') {
-        return "Message div must be a valid string.";
+        return 'Message div must be a valid string.';
     }
 
     var generationHub = $.connection.numberGenerationHub;
@@ -27,9 +27,11 @@
 }
 
 function connectToNumberGenerationHub(generationHub) {
-    if (typeof generationHub === 'undefined' || generationHub === null) {
-        return "You must supply a valid hub to start the connection.";
+    if (typeof generationHub === 'undefined' || generationHub === null || typeof generationHub === 'string') {
+        return 'You must supply a valid hub to start the connection.';
     }
+
+
 
     $.connection.hub.start().done(function () {
         generationHub.server.maxPrimeLimit();
@@ -38,15 +40,15 @@ function connectToNumberGenerationHub(generationHub) {
 
 function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
     if (typeof generationHub === 'undefined' || generationHub === null) {
-        return "You must specify a valid Generation Hub.";
+        return 'You must specify a valid Generation Hub.';
     }
 
     if (typeof amountOfPrimes === 'undefined' || amountOfPrimes === null) {
-        return "You must specify the amount of primes to generate.";
+        return 'You must specify the amount of primes to generate.';
     }
 
     if (amountOfPrimes <= 0) {
-        return "The number of primes to generate must be a number > 0.";
+        return 'The number of primes to generate must be a number > 0.';
     }
 
     generationHub.server.generateAmountOfPrimes(amountOfPrimes);
