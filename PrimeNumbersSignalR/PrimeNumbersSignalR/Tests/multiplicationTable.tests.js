@@ -266,7 +266,7 @@ describe('Tests for createMultiplicationTableBody.', function () {
                 function () {
                     var message = createMultiplicationTableBody(null);
 
-                    expect(message).toBe('You must specify an array of numbers to generate a table body.');
+                    expect(message).toBe('You must specify an array of ints to generate a table body.');
                 });
         }
     )
@@ -278,7 +278,7 @@ describe('Tests for createMultiplicationTableBody.', function () {
                     function () {
                         var message = createMultiplicationTableBody([]);
 
-                        expect(message).toBe('You must specify an array of numbers to generate a table body.');
+                        expect(message).toBe('You must specify an array of ints to generate a table body.');
                     });
             }
         )
@@ -291,7 +291,7 @@ describe('Tests for createMultiplicationTableBody.', function () {
                     function () {
                         var message = createMultiplicationTableBody(['Not', 'Valid', 'Numbers']);
 
-                        expect(message).toBe('You must specify an array of numbers to generate a table body.');
+                        expect(message).toBe('You must specify an array of ints to generate a table body.');
                     });
             }
         )
@@ -332,7 +332,7 @@ describe('Tests for createMultiplicationTableRow.', function () {
                 it('Should return message that a multipler cannot be negative',
 
                     function () {
-                        var message = createMultiplicationTableRow(0);
+                        var message = createMultiplicationTableRow(-1);
 
                         expect(message).toBe('You must specify an non negative multiplier to create a table row.');
                     });
@@ -360,7 +360,7 @@ describe('Tests for createMultiplicationTableRow.', function () {
                     function () {
                         var message = createMultiplicationTableRow(1, null);
 
-                        expect(message).toBe('You must specify an array of ints to generate a header.');
+                        expect(message).toBe('You must specify an array of ints to generate a table row.');
                     });
             }
         )
@@ -373,7 +373,7 @@ describe('Tests for createMultiplicationTableRow.', function () {
                     function () {
                         var message = createMultiplicationTableRow(1, []);
 
-                        expect(message).toBe('You must specify an array of ints to generate a header.');
+                        expect(message).toBe('You must specify an array of ints to generate a table row.');
                     });
             }
         )
@@ -386,7 +386,7 @@ describe('Tests for createMultiplicationTableRow.', function () {
                     function () {
                         var message = createMultiplicationTableRow(1, ['Not', 'Valid', 'Numbers']);
 
-                        expect(message).toBe('You must specify an array of ints for table numbers.');
+                        expect(message).toBe('You must specify an array of ints to generate a table row.');
                     });
             }
         )
