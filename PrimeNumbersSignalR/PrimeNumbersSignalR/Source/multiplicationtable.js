@@ -31,6 +31,19 @@ function createMultiplicationTableBody(tableNumbers) {
 }
 
 function createMultiplicationTableRow(multiplier, tableNumbers) {
+
+    if (typeof multiplier === 'undefined' || multiplier === null) {
+        return 'You must specify a multiplier.';
+    }
+
+    if (typeof multiplier === 'string') {
+        return 'You must specify an int for multiplier.';
+    }
+
+    if (multiplier < 0) {
+        return 'You must specify a multiplier >= 0.';
+    }
+
     var tableRow = $('<tr></tr>');
     var factorCell = $('<td></td>').addClass('factorCell');
 
