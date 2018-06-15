@@ -73,9 +73,17 @@ describe('Tests for createMultiplicationTable.',
             it('Should return an html table',
 
                 function () {
-                    var table = createMultiplicationTable([1, 2, 3], '');
+                    var generatedTable = createMultiplicationTable([1, 2, 3], '');
 
-                    expect(header.html()).toContain('<table>');
+                    expect(generatedTable.is('table')).toBeTruthy();
+
+                    expect(generatedTable.html).toContain('X');
+                    expect(generatedTable.html).toContain('1');
+                    expect(generatedTable.html).toContain('2');
+                    expect(generatedTable.html).toContain('3');
+                    expect(generatedTable.html).toContain('4');
+                    expect(generatedTable.html).toContain('6');
+                    expect(generatedTable.html).toContain('9');
                 });
         }
     )
