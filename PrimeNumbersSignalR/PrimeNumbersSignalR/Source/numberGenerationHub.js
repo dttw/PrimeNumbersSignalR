@@ -1,5 +1,4 @@
-﻿
-function createNumberGenerationHub(messageDiv) {
+﻿function createNumberGenerationHub(messageDiv) {
 
     if (typeof messageDiv === 'undefined' || messageDiv === null || messageDiv === '') {
         return "You must specify a message Div.";
@@ -28,7 +27,7 @@ function createNumberGenerationHub(messageDiv) {
 }
 
 function connectToNumberGenerationHub(generationHub) {
-    if (typeof hub === 'undefined' || hub === null) {
+    if (typeof generationHub === 'undefined' || generationHub === null) {
         return "You must supply a valid hub to start the connection.";
     }
 
@@ -38,7 +37,19 @@ function connectToNumberGenerationHub(generationHub) {
 }
 
 function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
-    // TODO: Send request to hub for amount of primes specified
+    if (typeof generationHub === 'undefined' || generationHub === null) {
+        return "You must specify a valid Generation Hub.";
+    }
+
+    if (typeof amountOfPrimes === 'undefined' || amountOfPrimes === null) {
+        return "You must specify the amount of primes to generate.";
+    }
+
+    if (amountOfPrimes <= 0) {
+        return "The number of primes to generate must be a number > 0.";
+    }
+
+    generationHub.server.generateAmountOfPrimes(amountOfPrimes);
 }
 
 function displayMessage(messageDiv, messageText) {
