@@ -28,7 +28,13 @@ function createNumberGenerationHub(messageDiv) {
 }
 
 function connectToNumberGenerationHub(generationHub) {
-    // TODO: Start the hub connection and run any functions required after the connection starts
+    if (typeof hub === 'undefined' || hub === null) {
+        return "You must supply a valid hub to start the connection.";
+    }
+
+    $.connection.hub.start().done(function () {
+        generationHub.server.maxPrimeLimit();
+    });
 }
 
 function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
