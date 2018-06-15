@@ -4,6 +4,10 @@
 // TODO: Page around table horizontally and vertically in 50 * 50 chunks
 
 function createMultiplicationTable(tableNumbers, tableClass) {
+    if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0) {
+        return 'You must specify an array of ints to generate a table.';
+    }
+
     //Create table
     var table = $('<table></table>').addClass(tableClass);
 
