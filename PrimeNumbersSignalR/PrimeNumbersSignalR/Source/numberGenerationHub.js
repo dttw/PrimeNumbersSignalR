@@ -57,5 +57,6 @@ function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
 }
 
 function displayMessage(messageDiv, messageText) {
-    // TODO: Write a message to a div. Probably want this somewhere more general eventually.
+    var htmlEncodedMessage = $('<div />').text(messageText).html();
+    $('#' + messageDiv).html(htmlEncodedMessage);
 }
