@@ -2,7 +2,7 @@
 /// <reference path='../Source/numberGenerationHub.js' />
 /// <reference path='../Scripts/jquery-3.3.1.min.js' />
 /// <reference path='../Scripts/jquery.signalR-2.2.3.min.js' />
-/// <reference path='signalrHubs.js' />
+/// <reference path='../Scripts/signalrHubs.js' />
 
 describe('Tests for createNumberGenerationHub.',
     // Test createNumberGenerationHub with null messageDiv
@@ -99,10 +99,9 @@ describe('Tests for connectToNumberGenerationHub.',
 
                 function () {
                     var numberGenerationHub = createNumberGenerationHub('messages');
+                    numberGenerationHub = connectToNumberGenerationHub(numberGenerationHub);
 
-                    connectToNumberGenerationHub(numberGenerationHub);
-
-                    expect(numberGenerationHub.state).toBe(1);
+                    expect(generationHub.client.maxPrimeLimit).toBeDefined();
                 });
         }
     )
