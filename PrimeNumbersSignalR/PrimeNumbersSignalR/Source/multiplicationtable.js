@@ -4,7 +4,16 @@
 // TODO: Page around table horizontally and vertically in 50 * 50 chunks
 
 function createMultiplicationTable(tableNumbers, tableClass) {
+
+    if (typeof tableClass === 'undefined' || tableClass === null || tableClass === '') {
+        return 'You must specify a table class to generate a table.';
+    }
+
     if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0) {
+        return 'You must specify an array of ints to generate a table.';
+    }
+
+    if (tableNumbers.some(isNaN)) {
         return 'You must specify an array of ints to generate a table.';
     }
 
