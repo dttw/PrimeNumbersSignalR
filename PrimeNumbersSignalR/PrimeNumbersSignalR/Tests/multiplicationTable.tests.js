@@ -126,9 +126,11 @@ describe('Tests for createMultiplicationTableHeader.',
             it('Should return an html table header row',
 
                 function () {
-                    var header = createMultiplicationTableHeader([1, 2, 3]);
+                    var generatedTableHeader = createMultiplicationTableHeader([1, 2, 3]);
 
-                    expect(header.html()).toContain('<thead>');
+                    expect(generatedTableHeader.is('thead')).toBeTruthy();
+
+                    expect(generatedTableHeader.html).toContain('X');
 
                 });
         }
