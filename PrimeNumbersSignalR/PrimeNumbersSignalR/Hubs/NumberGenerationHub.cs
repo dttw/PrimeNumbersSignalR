@@ -29,8 +29,10 @@ namespace PrimeNumbersSignalR.Hubs
 
                 Clients.All.generatedNumbers(foundPrimes);
             }
-
-            Clients.All.primesRequestedOutOfRange(string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit.ToString()));
+            else
+            {
+                Clients.All.primesRequestedOutOfRange(string.Format("You must enter a number between 1 and {0}", primeGenerator.MaxPrimeLimit.ToString()));
+            }
         }
     }
 }
