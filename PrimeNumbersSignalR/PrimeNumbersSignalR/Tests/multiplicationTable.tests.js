@@ -399,8 +399,21 @@ describe("Tests for createMultiplicationTableCell.",
                 });
         }
     )
-
+    ,
     // Test createMultiplicationTableCell with  -1 multiplier
+    describe("Try to create a table cell with -1 multiplier.",
+        function () {
+            it("Should return message that a multiplier cannot be negative",
+
+                function () {
+                    var message = createMultiplicationTableCell(-1, 1);
+
+                    expect(message).toBe("You must specify a multiplier >= 0.");
+                });
+        }
+    )
+
+
     // Test createMultiplicationTableCell with non int multiplier
     // Test createMultiplicationTableCell with valid multiplier
     // Test createMultiplicationTableCell with null multiplicand
