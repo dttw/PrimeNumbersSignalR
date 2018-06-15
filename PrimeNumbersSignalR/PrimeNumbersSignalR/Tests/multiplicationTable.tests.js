@@ -425,13 +425,61 @@ describe("Tests for createMultiplicationTableCell.",
                 });
         }
     )
+    ,
+    // Test createMultiplicationTableCell with non int multiplier
+    describe("Try to create a table cell with string multiplier.",
+        function () {
+            it("Should return message that a multiplier must be an integer",
 
+                function () {
+                    var message = createMultiplicationTableCell("NaN", 1);
 
-    // Test createMultiplicationTableCell with valid multiplier
+                    expect(message).toBe("You must specify an int for multiplier.");
+                });
+        }
+    )
+    ,
     // Test createMultiplicationTableCell with null multiplicand
+    describe("Try to create a table cell with null multiplicand.",
+        function () {
+            it("Should return message that a multiplicand is required",
+
+                function () {
+                    var message = createMultiplicationTableCell(1, null);
+
+                    expect(message).toBe("You must specify a multiplicand.");
+                });
+        }
+    )
+    ,
     // Test createMultiplicationTableCell with -1 multiplicand
+    describe("Try to create a table cell with -1 multiplicand.",
+        function () {
+            it("Should return message that a multiplicand cannot be negative",
+
+                function () {
+                    var message = createMultiplicationTableCell(1, -1);
+
+                    expect(message).toBe("You must specify a multiplicand >= 0.");
+                });
+        }
+    )
+    ,
     // Test createMultiplicationTableCell with non int multiplicand
+    describe("Try to create a table cell with string multiplicand.",
+        function () {
+            it("Should return message that a multiplicand must be an integer",
+
+                function () {
+                    var message = createMultiplicationTableCell(1, "NaN");
+
+                    expect(message).toBe("You must specify an int for multiplicand.");
+                });
+        }
+    )
     // Test createMultiplicationTableCell with valid multiplier & multiplicand
+
+
     // Test that createMultiplicationTableCell returns a valid table cell
 
 )
