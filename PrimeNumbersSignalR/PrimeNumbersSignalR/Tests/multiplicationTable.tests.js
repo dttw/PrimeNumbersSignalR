@@ -412,9 +412,21 @@ describe("Tests for createMultiplicationTableCell.",
                 });
         }
     )
-
-
+    ,
     // Test createMultiplicationTableCell with non int multiplier
+    describe("Try to create a table cell with string multiplier.",
+        function () {
+            it("Should return message that a multiplier must be an integer",
+
+                function () {
+                    var message = createMultiplicationTableCell("NaN", 1);
+
+                    expect(message).toBe("You must specify an int for multiplier.");
+                });
+        }
+    )
+
+
     // Test createMultiplicationTableCell with valid multiplier
     // Test createMultiplicationTableCell with null multiplicand
     // Test createMultiplicationTableCell with -1 multiplicand
