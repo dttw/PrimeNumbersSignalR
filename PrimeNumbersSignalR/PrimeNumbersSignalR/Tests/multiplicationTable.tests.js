@@ -477,11 +477,19 @@ describe("Tests for createMultiplicationTableCell.",
                 });
         }
     )
+    ,
     // Test createMultiplicationTableCell with valid multiplier & multiplicand
+    describe("Try to create a table cell with valid multiplier and multiplicand.",
+        function () {
+            it("Should return return an html table cell",
 
+                function () {
+                    var message = createMultiplicationTableCell(1, 2);
 
-    // Test that createMultiplicationTableCell returns a valid table cell
-
+                    expect(header.html()).toContain('<td>');
+                });
+        }
+    )
 )
 
 
