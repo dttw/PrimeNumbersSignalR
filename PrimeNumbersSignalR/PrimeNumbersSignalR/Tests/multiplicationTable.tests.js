@@ -293,12 +293,6 @@ describe("Tests for createMultiplicationTableBody.",
     )
 );
 
-
-
-// Test createMultiplicationTableRow with non int tableNumbers
-// Test createMultiplicationTableRow with valid multiplier & tableNumbers
-// Test that createMultiplicationTableRow returns a valid table row
-
 describe("Tests for createMultiplicationTableRow.",
     // Test createMultiplicationTableRow with null multiplier
     describe("Try to create a table row with null multiplier.",
@@ -364,9 +358,24 @@ describe("Tests for createMultiplicationTableRow.",
                 });
         }
     )
+    ,
+    // Test createMultiplicationTableRow with non int tableNumbers
+    describe("Try to create a table row with array of strings for table numbers.",
+        function () {
+            it("Should return message that an array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTableRow(1, ["Not", "Valid", "Numbers"]);
+
+                    expect(message).toBe("You must specify an array of ints for table numbers.");
+                });
+        }
+    )
 )
 
 
+// Test createMultiplicationTableRow with valid multiplier & tableNumbers
+// Test that createMultiplicationTableRow returns a valid table row
 
 
 // Test createMultiplicationTableCell with null multiplier
