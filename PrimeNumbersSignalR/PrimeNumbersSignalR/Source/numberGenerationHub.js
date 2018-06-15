@@ -23,6 +23,8 @@
         createMultiplicationTable(numbers, '#multiplicationTable', 'table table-striped');
     }
 
+    connectToNumberGenerationHub(generationHub);
+
     return generationHub;
 }
 
@@ -31,11 +33,11 @@ function connectToNumberGenerationHub(generationHub) {
         return 'You must supply a valid hub to start the connection.';
     }
 
-
-
     $.connection.hub.start().done(function () {
         generationHub.server.maxPrimeLimit();
     });
+
+    return generationHub;
 }
 
 function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
