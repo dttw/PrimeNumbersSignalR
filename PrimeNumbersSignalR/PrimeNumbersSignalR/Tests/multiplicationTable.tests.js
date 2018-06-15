@@ -386,12 +386,29 @@ describe("Tests for createMultiplicationTableRow.",
     )
 )
 
-// Test createMultiplicationTableCell with null multiplier
-// Test createMultiplicationTableCell with  -1 multiplier
-// Test createMultiplicationTableCell with non int multiplier
-// Test createMultiplicationTableCell with valid multiplier
-// Test createMultiplicationTableCell with null multiplicand
-// Test createMultiplicationTableCell with -1 multiplicand
-// Test createMultiplicationTableCell with non int multiplicand
-// Test createMultiplicationTableCell with valid multiplier & multiplicand
-// Test that createMultiplicationTableCell returns a valid table cell
+describe("Tests for createMultiplicationTableCell.",
+    // Test createMultiplicationTableCell with null multiplier
+    describe("Try to create a table cell with null multiplier.",
+        function () {
+            it("Should return message that a multipler is required",
+
+                function () {
+                    var message = createMultiplicationTableCell(null, 1);
+
+                    expect(message).toBe("You must specify a multiplier.");
+                });
+        }
+    )
+
+    // Test createMultiplicationTableCell with  -1 multiplier
+    // Test createMultiplicationTableCell with non int multiplier
+    // Test createMultiplicationTableCell with valid multiplier
+    // Test createMultiplicationTableCell with null multiplicand
+    // Test createMultiplicationTableCell with -1 multiplicand
+    // Test createMultiplicationTableCell with non int multiplicand
+    // Test createMultiplicationTableCell with valid multiplier & multiplicand
+    // Test that createMultiplicationTableCell returns a valid table cell
+
+)
+
+
