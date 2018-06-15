@@ -4,10 +4,17 @@
 // TODO: Page around table horizontally and vertically in 50 * 50 chunks
 
 function createMultiplicationTable(tableNumbers, tableClass) {
-    // TODO: Create table
-    // TODO: Create header and add to table
-    // TODO: Create body and add to table
-    // TODO: Return table
+    //Create table
+    var table = $('<table></table>').addClass(tableClass);
+
+    //Create header and add to table
+    table.append(this.multiplicationTableHeader(tableNumbers));
+
+    //Create body and add to table
+    table.append(this.multiplicationTableBody(tableNumbers));
+
+    // Return table
+    return table;
 }
 
 function createMultiplicationTableHeader(tableNumbers) {
