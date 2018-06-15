@@ -233,9 +233,11 @@ describe('Tests for createMultiplicationTableHeaderCell.',
             it('Should return an html table header cell',
 
                 function () {
-                    var header = createMultiplicationTableHeaderCell(1);
+                    var generatedHeaderCell = createMultiplicationTableHeaderCell(1);
 
-                    expect(header.html()).toContain('<td>');
+                    expect(generatedHeaderCell.is('th')).toBeTruthy();
+
+                    expect(generatedHeaderCell.html).toContain('1');
                 });
         }
     )
