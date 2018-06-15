@@ -180,9 +180,11 @@ describe('Tests for createMultiplicationTableHeaderRow.',
             it('Should return an html header row',
 
                 function () {
-                    var header = createMultiplicationTableHeaderRow([1, 2, 3]);
+                    var generatedTableHeader = createMultiplicationTableHeaderRow([1, 2, 3]);
 
-                    expect(header.html()).toContain('<thead>');
+                    expect(generatedTableHeader.is('thead')).toBeTruthy();
+
+                    expect(generatedTableHeader.html).toContain('3');
                 });
         }
     )
