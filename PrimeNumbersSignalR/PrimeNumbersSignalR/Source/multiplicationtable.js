@@ -36,6 +36,10 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
 }
 
 function createMultiplicationTableCell(multiplier, multiplicand) {
-    // TODO: Create table cell
-    // TODO: return table cell
+    //Create table cell
+    var tableCell = $('<td></td>').clone();
+
+    tableCell.text(multiplier * multiplicand);
+    //return table cell
+    return tableCell;
 }
