@@ -56,7 +56,7 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
     row.append(
         tableNumbers.forEach(
             function (multiplicand) {
-                row.append(createMultiplicationTableCell(multiplier * multiplicand));
+                row.append(createMultiplicationTableCell(multiplier, multiplicand));
             }));
 
     return row;
