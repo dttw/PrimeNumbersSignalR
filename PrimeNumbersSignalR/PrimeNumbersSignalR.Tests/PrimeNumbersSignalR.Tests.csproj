@@ -91,6 +91,8 @@
   <ItemGroup>
     <Compile Include="Hubs\NumberGenerationHub\INumberGenerationClientContract.cs" />
     <Compile Include="Hubs\NumberGenerationHub\NumberGenerationHubTests.cs" />
+    <Compile Include="NumberGenerators\Primes\MockPrimeGenerator.cs" />
+    <Compile Include="NumberGenerators\Primes\SieveOfAtkinPrimeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
