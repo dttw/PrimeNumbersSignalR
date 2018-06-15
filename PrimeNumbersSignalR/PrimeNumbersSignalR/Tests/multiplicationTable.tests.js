@@ -240,8 +240,6 @@ describe("Tests for createMultiplicationTableHeaderCell.",
     )
 );
 
-// Test that createMultiplicationTableBody returns a valid table body
-
 describe("Tests for createMultiplicationTableBody.",
     // Test createMultiplicationTableBody with null tableNumbers
     describe("Try to create a table body with null table numbers.",
@@ -296,13 +294,30 @@ describe("Tests for createMultiplicationTableBody.",
 );
 
 
-// Test createMultiplicationTableRow with null multiplier
+// Test createMultiplicationTableRow with -1 multiplier
 // Test createMultiplicationTableRow with non int multiplier
-// Test createMultiplicationTableRow with valid multiplier
+// Test createMultiplicationTableRow with null tableNumbers
+// Test createMultiplicationTableRow with empty array for tableNumbers
 // Test createMultiplicationTableRow with non int tableNumbers
-// Test createMultiplicationTableRow with valid tableNumbers
-// Test createMultiplicationTableRow with null tableNumbers & tableNumbers
+// Test createMultiplicationTableRow with valid multiplier & tableNumbers
 // Test that createMultiplicationTableRow returns a valid table row
+
+describe("Tests for createMultiplicationTableRow.",
+    // Test createMultiplicationTableRow with null multiplier
+    describe("Try to create a table row with null multiplier.",
+        function () {
+            it("Should return message that a multipler is required",
+
+                function () {
+                    var message = createMultiplicationTableRow(null);
+
+                    expect(message).toBe("You must specify a multiplier.");
+                });
+        }
+    )
+)
+
+
 
 
 // Test createMultiplicationTableCell with null multiplier
