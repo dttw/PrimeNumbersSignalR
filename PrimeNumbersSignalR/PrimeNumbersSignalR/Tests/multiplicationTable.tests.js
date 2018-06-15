@@ -294,7 +294,6 @@ describe("Tests for createMultiplicationTableBody.",
 );
 
 
-// Test createMultiplicationTableRow with -1 multiplier
 // Test createMultiplicationTableRow with non int multiplier
 // Test createMultiplicationTableRow with null tableNumbers
 // Test createMultiplicationTableRow with empty array for tableNumbers
@@ -312,6 +311,19 @@ describe("Tests for createMultiplicationTableRow.",
                     var message = createMultiplicationTableRow(null);
 
                     expect(message).toBe("You must specify a multiplier.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTableRow with -1 multiplier
+    describe("Try to create a table row with -1 multiplier.",
+        function () {
+            it("Should return message that a multipler cannot be negative",
+
+                function () {
+                    var message = createMultiplicationTableRow(0);
+
+                    expect(message).toBe("You must specify a multiplier >= 0.");
                 });
         }
     )
