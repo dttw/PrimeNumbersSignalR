@@ -68,10 +68,46 @@ describe("Tests for createMultiplicationTable.",
     )
 );
 
-// Test createMultiplicationTableHeader with null table numbers
-// Test createMultiplicationTableHeader with non int table numbers
-// Test createMultiplicationTableHeader with valid table numbers
-// Test that createMultiplicationTableHeader returns a valid table header
+describe("Tests for createMultiplicationTableHeader.",
+    // Test createMultiplicationTableHeader with null table numbers
+    describe("Try to create header with null table numbers.",
+        function () {
+            it("Should return message that a valid array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTableHeader(null);
+
+                    expect(message).toBe("You must specify an array of ints to generate a header.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTableHeader with non int table numbers
+    describe("Try to create header with array of strings for table numbers.",
+        function () {
+            it("Should return message that a valid array of table numbers is required",
+
+                function () {
+                    var message = createMultiplicationTableHeader(["Not", "Valid", "Numbers"]);
+
+                    expect(message).toBe("You must specify an array of ints to generate a header.");
+                });
+        }
+    )
+    ,
+    // Test createMultiplicationTableHeader with valid table numbers
+    describe("Try to create header with array of ints for table numbers.",
+        function () {
+            it("Should return an html table header row",
+
+                function () {
+                    var message = createMultiplicationTableHeader([1, 2, 3]);
+
+                    expect(message).toBe("You must specify an array of ints to generate a header.");
+                });
+        }
+    )
+);
 
 
 // Test createMultiplicationTableHeaderRow with null table numbers
