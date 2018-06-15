@@ -26,8 +26,18 @@ function createMultiplicationTableHeaderCell(multiplicand) {
 }
 
 function createMultiplicationTableBody(tableNumbers) {
-    // TODO: Create table body
-    // TODO: Return table body
+    //  Create table body
+
+    var tableBody = $('<tbody></tbody>');
+
+    tableNumbers.forEach(
+        function (multiplier) {
+            tableBody.append(createMultiplicationTableRow(multiplier, tableNumbers)); //Add the row to the table body.
+        }
+    )
+    //  Return table body
+    return tableBody;
+
 }
 
 function createMultiplicationTableRow(multiplier, tableNumbers) {
@@ -60,7 +70,6 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
             }));
 
     return row;
-
 }
 
 function createMultiplicationTableCell(multiplier, multiplicand) {
