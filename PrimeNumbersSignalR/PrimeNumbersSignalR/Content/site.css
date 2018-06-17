@@ -1,0 +1,18 @@
+﻿body {
+}
+
+.container {
+    height: 95%;
+    width: 95%;
+}
+
+.multiplicationTableContainer {
+    height: 800px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.factorCell {
+    font-weight: 700;
+}
