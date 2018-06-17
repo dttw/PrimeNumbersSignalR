@@ -2,11 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using PrimeNumbersSignalR.NumberGenerators.Primes;
-using PrimeNumbersSignalR.NumberGenerators.Primes.Sieves;
 using PrimeNumbersSignalR.Tests.NumberGenerators.Primes;
-using System;
 using System.Collections.Generic;
-using System.Dynamic;
 
 namespace PrimeNumbersSignalR.Hubs.Tests
 {
