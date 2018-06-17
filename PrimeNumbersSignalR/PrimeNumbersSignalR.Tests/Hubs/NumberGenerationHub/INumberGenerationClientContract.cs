@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrimeNumbersSignalR.Hubs.Tests
+namespace PrimeNumbersSignalR.Tests.Hubs
 {
     public interface INumberGenerationClientContract
     {

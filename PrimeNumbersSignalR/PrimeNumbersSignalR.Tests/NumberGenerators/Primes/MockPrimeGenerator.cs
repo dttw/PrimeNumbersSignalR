@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrimeNumbersSignalR.Tests.NumberGenerators.Primes
+namespace PrimeNumbersSignalR.NumberGenerators.Primes.Sieves
 {
     public class MockPrimeGenerator : IPrimeGenerator
     {

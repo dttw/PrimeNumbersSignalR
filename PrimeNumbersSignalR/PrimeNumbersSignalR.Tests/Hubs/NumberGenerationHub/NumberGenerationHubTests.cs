@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using PrimeNumbersSignalR.Hubs;
 using PrimeNumbersSignalR.NumberGenerators.Primes;
-using PrimeNumbersSignalR.Tests.NumberGenerators.Primes;
+using PrimeNumbersSignalR.NumberGenerators.Primes.Sieves;
 using System.Collections.Generic;
 
-namespace PrimeNumbersSignalR.Hubs.Tests
+namespace PrimeNumbersSignalR.Tests.Hubs.Tests
 {
     [TestClass()]
     public class NumberGenerationHubTests
