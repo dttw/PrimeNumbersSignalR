@@ -21,6 +21,7 @@ namespace PrimeNumbersSignalR.Hubs
             Clients.All.maxPrimeLimit(primeGenerator.MaxPrimeLimit);
         }
 
+        // Generates an amount of primes up to the limit specified.
         public void GenerateAmountOfPrimes(int amountOfPrimes)
         {
             if (!(amountOfPrimes <= 0) && !(amountOfPrimes > primeGenerator.MaxPrimeLimit))
