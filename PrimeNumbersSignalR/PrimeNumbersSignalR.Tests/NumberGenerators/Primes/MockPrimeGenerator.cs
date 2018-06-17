@@ -9,12 +9,16 @@ namespace PrimeNumbersSignalR.Tests.NumberGenerators.Primes
 {
     public class MockPrimeGenerator : IPrimeGenerator
     {
-        private int maxPrimeLimit = 10;
         private IList<long> primesFound = new List<long>();
-        public int MaxPrimeLimit => throw new NotImplementedException();
+        public int MaxPrimeLimit { get; } = 10;
 
         public IList<long> FindAmountOfPrimes(int amountOfPrimes)
         {
+            if (amountOfPrimes <= 0 || amountOfPrimes > MaxPrimeLimit)
+            {
+                throw new ArgumentOutOfRangeException("You must enter a value between 1 and {0}", MaxPrimeLimit.ToString());
+            }
+
             MockGeneration(amountOfPrimes);
 
             return primesFound;
