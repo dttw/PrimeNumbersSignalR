@@ -1,8 +1,8 @@
-﻿/// <reference path='../Scripts/jasmine/jasmine.js'/>
-/// <reference path='../Source/numberGenerationHub.js' />
-/// <reference path='../Scripts/jquery-3.3.1.min.js' />
-/// <reference path='../Scripts/jquery.signalR-2.2.3.min.js' />
-/// <reference path='../SignalR/signalrHubs.js' />
+﻿/// <reference path="../scripts/jasmine/jasmine.js" />
+/// <reference path='../../primenumberssignalr/Source/numberGenerationHub.js' />
+/// <reference path='../../primenumberssignalr/Scripts/jquery-3.3.1.min.js' />
+/// <reference path='../../primenumberssignalr/Scripts/jquery.signalR-2.2.3.min.js' />
+/// <reference path='../../primenumberssignalr/SignalR/signalrHubs.js' />
 
 describe('Tests for createNumberGenerationHub.', function () {
     // Test createNumberGenerationHub with null messageDiv

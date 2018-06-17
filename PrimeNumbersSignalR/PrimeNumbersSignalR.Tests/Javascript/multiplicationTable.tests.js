@@ -1,6 +1,6 @@
-﻿/// <reference path='../Scripts/jasmine/jasmine.js' />
-/// <reference path='../Scripts/jquery-3.3.1.min.js' />
-/// <reference path='../Source/multiplicationtable.js' />
+﻿/// <reference path="../scripts/jasmine/jasmine.js" />
+/// <reference path='../../primenumberssignalr/Scripts/jquery-3.3.1.min.js' />
+/// <reference path="../../primenumberssignalr/source/multiplicationtable.js" />
 
 describe('Tests for createMultiplicationTable.', function () {
     // Test createMultiplicationTable with null table numbers
