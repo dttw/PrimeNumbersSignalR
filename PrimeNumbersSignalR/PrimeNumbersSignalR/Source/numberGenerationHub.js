@@ -21,8 +21,17 @@ function createNumberGenerationHub(messageDiv) {
     };
 
     generationHub.client.generatedNumbers = function (numbers) {
-        var multiplicationTable = new MultiplicationTable();
-        createMultiplicationTable(numbers, '#multiplicationTable', 'table table-striped');
+        // If there are more than 250 generated primes the multiplication table generation takes a long time so just display the primes
+        if (numbers.length > 250) {
+            displayMessage(messageDiv, 'Displaying generated primes.');
+            var htmlEncodedMessage = $('<div />').text(numbers).html();
+            $('#multiplicationTable').html(htmlEncodedMessage);
+        }
+        else {
+            var multiplicationTable = createMultiplicationTable(numbers, 'table');
+            displayMessage(messageDiv, 'Displaying multiplication table.');
+            $('#multiplicationTable').html(multiplicationTable);
+        }
     };
 
     return generationHub;
@@ -51,7 +60,7 @@ function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
         return 'You must specify the amount of primes to generate.';
     }
 
-    if (amountOfPrimes <= 0 || typeof amountOfPrimes === 'string') {
+    if (amountOfPrimes <= 0 || isNaN(amountOfPrimes)) {
         return 'The number of primes to generate must be a number > 0.';
     }
 
