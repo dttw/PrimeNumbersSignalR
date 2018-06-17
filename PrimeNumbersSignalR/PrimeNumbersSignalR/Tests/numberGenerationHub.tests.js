@@ -57,7 +57,7 @@ describe('Tests for createNumberGenerationHub.', function () {
                     }
                 );
             }
-        )
+        );
 });
 
 describe('Tests for connectToNumberGenerationHub.', function () {
@@ -84,7 +84,7 @@ describe('Tests for connectToNumberGenerationHub.', function () {
                         expect(message).toBe('You must supply a valid hub to start the connection.');
                     });
             }
-        )
+        );
     //,
     //describe('Try to connect to hub with valid hub.',
     //    // Test connectToNumberGenerationHub with valid hub
@@ -164,5 +164,5 @@ describe('Tests for generatePrimeMultiplicationTable.', function () {
                         expect(message).toBe('You must specify a valid Generation Hub.');
                     });
             }
-        )
+        );
 });

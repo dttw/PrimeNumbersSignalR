@@ -1,4 +1,6 @@
-﻿function createNumberGenerationHub(messageDiv) {
+﻿
+// Creates a hub proxy with required client methods to use the number generation hub.
+function createNumberGenerationHub(messageDiv) {
 
     if (typeof messageDiv === 'undefined' || messageDiv === null || messageDiv === '') {
         return 'You must specify a message Div.';
@@ -21,11 +23,12 @@
     generationHub.client.generatedNumbers = function (numbers) {
         var multiplicationTable = new MultiplicationTable();
         createMultiplicationTable(numbers, '#multiplicationTable', 'table table-striped');
-    }
+    };
 
     return generationHub;
 }
 
+// Connects the clientside hub to the server.
 function connectToNumberGenerationHub(generationHub) {
     if (typeof generationHub === 'undefined' || generationHub === null || typeof generationHub === 'string') {
         return 'You must supply a valid hub to start the connection.';
@@ -38,6 +41,7 @@ function connectToNumberGenerationHub(generationHub) {
     return generationHub;
 }
 
+// Calls the server side GenerateAmountOfPrimes method with the amount of primes requested.
 function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
     if (typeof generationHub === 'undefined' || generationHub === null) {
         return 'You must specify a valid Generation Hub.';
@@ -54,6 +58,7 @@ function generatePrimeMultiplicationTable(amountOfPrimes, generationHub) {
     generationHub.server.generateAmountOfPrimes(amountOfPrimes);
 }
 
+// Displays a message in a specified div on the page.
 function displayMessage(messageDiv, messageText) {
     var htmlEncodedMessage = $('<div />').text(messageText).html();
     $('#' + messageDiv).html(htmlEncodedMessage);

@@ -9,7 +9,7 @@ describe('Tests for createMultiplicationTable.', function () {
             it('Should return message that a valid array of table numbers is required',
 
                 function () {
-                    var message = createMultiplicationTable(null, 'tableClass');
+                    var message = createMultiplicationTable(null, 'tableCssClass');
 
                     expect(message).toBe('You must specify an array of ints to generate a table.');
                 });
@@ -21,7 +21,7 @@ describe('Tests for createMultiplicationTable.', function () {
                 it('Should return message that a valid array of table numbers is required',
 
                     function () {
-                        var message = createMultiplicationTable([], 'tableClass');
+                        var message = createMultiplicationTable([], 'tableCssClass');
 
                         expect(message).toBe('You must specify an array of ints to generate a table.');
                     });
@@ -34,7 +34,7 @@ describe('Tests for createMultiplicationTable.', function () {
                 it('Should return message that a valid array of table numbers is required',
 
                     function () {
-                        var message = createMultiplicationTable(['Not', 'Valid', 'Numbers'], 'tableClass');
+                        var message = createMultiplicationTable(['Not', 'Valid', 'Numbers'], 'tableCssClass');
 
                         expect(message).toBe('You must specify an array of ints to generate a table.');
                     });
@@ -73,7 +73,7 @@ describe('Tests for createMultiplicationTable.', function () {
                 it('Should return an html table',
 
                     function () {
-                        var generatedTable = createMultiplicationTable([1, 2, 3], 'tableClass');
+                        var generatedTable = createMultiplicationTable([1, 2, 3], 'tableCssClass');
 
                         expect(generatedTable.is('table')).toBeTruthy();
 
@@ -86,7 +86,7 @@ describe('Tests for createMultiplicationTable.', function () {
                         expect(generatedTable.html()).toContain('9');
                     });
             }
-        )
+        );
 }
 );
 
@@ -143,7 +143,7 @@ describe('Tests for createMultiplicationTableHeader.', function () {
 
                     });
             }
-        )
+        );
 }
 );
 
@@ -199,7 +199,7 @@ describe('Tests for createMultiplicationTableHeaderRow.', function () {
                         expect(generatedTableHeader.html()).toContain('3');
                     });
             }
-        )
+        );
 });
 
 describe('Tests for createMultiplicationTableHeaderCell.', function () {
@@ -254,7 +254,7 @@ describe('Tests for createMultiplicationTableHeaderCell.', function () {
                         expect(generatedHeaderCell.html()).toContain('1');
                     });
             }
-        )
+        );
 });
 
 describe('Tests for createMultiplicationTableBody.', function () {
@@ -309,7 +309,7 @@ describe('Tests for createMultiplicationTableBody.', function () {
                         expect(generatedTableBody.html()).toContain('9');
                     });
             }
-        )
+        );
 });
 
 describe('Tests for createMultiplicationTableRow.', function () {
@@ -404,7 +404,7 @@ describe('Tests for createMultiplicationTableRow.', function () {
                         expect(generatedTableRow.html()).toContain('9');
                     });
             }
-        )
+        );
 });
 
 describe('Tests for createMultiplicationTableCell.', function () {
@@ -512,5 +512,5 @@ describe('Tests for createMultiplicationTableCell.', function () {
                         expect(generatedTableCell.html()).toContain('2');
                     });
             }
-        )
+        );
 });

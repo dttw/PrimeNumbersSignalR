@@ -1,11 +1,10 @@
-﻿// TODO: function to accept an array of positive ints
-// TODO: function to write the table from numbers supplied
-// TODO: Display numbers in max of 50 * 50 chunks
+﻿// TODO: Display numbers in max of 50 * 50 chunks
 // TODO: Page around table horizontally and vertically in 50 * 50 chunks
 
-function createMultiplicationTable(tableNumbers, tableClass) {
+// Creates a fll multiplicaton table from an array of numbers with a specified table css class.
+function createMultiplicationTable(tableNumbers, tableCssClass) {
 
-    if (typeof tableClass === 'undefined' || tableClass === null || tableClass === '') {
+    if (typeof tableCssClass === 'undefined' || tableCssClass === null || tableCssClass === '') {
         return 'You must specify a table class to generate a table.';
     }
 
@@ -14,7 +13,7 @@ function createMultiplicationTable(tableNumbers, tableClass) {
     }
 
     //Create table
-    var table = $('<table></table>').addClass(tableClass);
+    var table = $('<table></table>').addClass(tableCssClass);
 
     //Create header and add to table
     table.append(createMultiplicationTableHeader(tableNumbers));
@@ -26,6 +25,7 @@ function createMultiplicationTable(tableNumbers, tableClass) {
     return table;
 }
 
+// Creates the header section of a multiplication table using the numbers supplied.
 function createMultiplicationTableHeader(tableNumbers) {
 
     if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
@@ -41,6 +41,7 @@ function createMultiplicationTableHeader(tableNumbers) {
     return tableHeader;
 }
 
+// Creates the header row of a multiplication table. Differs from a normal table in that an X is added as the first cell of the header.
 function createMultiplicationTableHeaderRow(tableNumbers) {
 
     if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
@@ -61,10 +62,10 @@ function createMultiplicationTableHeaderRow(tableNumbers) {
         function (multiplicand) {
             headerRow.append(createMultiplicationTableHeaderCell(multiplicand));
         });
-
     return headerRow;
 }
 
+// Creates a table header cell for an individual number.
 function createMultiplicationTableHeaderCell(multiplicand) {
 
     if (typeof multiplicand === 'undefined' || multiplicand === null || isNaN(multiplicand) || multiplicand < 0) {
@@ -78,6 +79,7 @@ function createMultiplicationTableHeaderCell(multiplicand) {
     return tableHeaderCell.clone().text(multiplicand);
 }
 
+// Creates the table body section using the numbers supplied. 
 function createMultiplicationTableBody(tableNumbers) {
     //  Create table body
     if (typeof tableNumbers === 'undefined' || tableNumbers === null || tableNumbers.length === 0 || tableNumbers.some(isNaN)) {
@@ -93,9 +95,9 @@ function createMultiplicationTableBody(tableNumbers) {
     )
     //  Return table body
     return tableBody;
-
 }
 
+// Creates an individual table row. Row contains the multiplier in the first column and then multiplier * each number that makes up the table
 function createMultiplicationTableRow(multiplier, tableNumbers) {
 
     if (typeof multiplier === 'undefined' || multiplier === null || isNaN(multiplier) || multiplier < 0) {
@@ -120,10 +122,10 @@ function createMultiplicationTableRow(multiplier, tableNumbers) {
             function (multiplicand) {
                 row.append(createMultiplicationTableCell(multiplier, multiplicand));
             }));
-
     return row;
 }
 
+// Creates an individual table cell, text is set as multiplier * multiplicand.
 function createMultiplicationTableCell(multiplier, multiplicand) {
 
     if (typeof multiplier === 'undefined' || multiplier === null || isNaN(multiplier) || multiplier < 0) {
