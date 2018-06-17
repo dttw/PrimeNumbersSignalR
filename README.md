@@ -3,14 +3,14 @@ Simple site which generates and displays prime numbers using SignalR.
 
 # Running the application
 
-Run from Visual Studio
+Run the PrimeNumberSignalR project from Visual Studio
 A page will be displayed asking you to enter the number of primes to generate.
 
 # Tests
 
-Run c# tests using the visual studio test running
+Run c# tests using the visual studio test runner
 
-Run JS tests using Chutzpah context menu
+I ran my tests using Chutzpah to allow for VS integeration. They can however be run from the command line using any tool that will run jasmine tests.
 
 # Happy with
 
